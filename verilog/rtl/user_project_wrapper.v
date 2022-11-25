@@ -35,6 +35,8 @@
 `include "config_reg.v"
 `include "audiodac.v"
 `include "tempsense.v"
+//`include "/foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
+//`include "/foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
 
 module user_project_wrapper #(
     parameter BITS = 32
@@ -96,6 +98,11 @@ module user_project_wrapper #(
     wire        config_wr_w =       io_in[26];
     wire [1:0]  config_adr_w =      io_in[28:27];
     wire        trigger_in_w =      io_in[29];
+    wire        adc_in_p =          io_in[30];
+    wire        adc_in_n =          io_in[31];
+    assign      io_out[37:32] =     mux_out_w;
+
+    wire [5:0]  mux_out_w;
     wire [5:0]  temp_dac_w;
     wire [11:0] temp_tick_w;
     wire        temp_done_w;
@@ -104,7 +111,7 @@ module user_project_wrapper #(
     wire [15:0] reg1_w;
     wire [15:0] reg2_w;
     wire [15:0] reg3_w;
-    wire        dummy_w =           reg3_w[15];
+    wire        dummy_w =           reg0_w[15];
 
     config_reg cfg_reg0 (
     `ifdef USE_POWER_PINS
@@ -122,15 +129,15 @@ module user_project_wrapper #(
         .reg2_o(reg2_w),
         .reg3_o(reg3_w),
         .mux_adr_i(data_out_sel_w),
-        .mux_o(io_out[37:30]),
-        .mux0_i({dummy_w,temp_dac_w,temp_done_w}),
-        .mux1_i(temp_tick_w[7:0]),
-        .mux2_i({{4{dummy_w}},temp_tick_w[11:8]}),
-        .mux3_i({{2{dummy_w}},dac_out_w}),
-        .mux4_i({8{dummy_w}}),
-        .mux5_i({8{dummy_w}}),
-        .mux6_i({8{dummy_w}}),
-        .mux7_i({8{dummy_w}})
+        .mux_o(mux_out_w),
+        .mux0_i({{5{dummy_w}},temp_done_w}),
+        .mux1_i(temp_dac_w),
+        .mux2_i(temp_tick_w[5:0]),
+        .mux3_i(temp_tick_w[11:6]),
+        .mux4_i(dac_out_w),
+        .mux5_i({6{dummy_w}}),
+        .mux6_i({6{dummy_w}}),
+        .mux7_i({6{dummy_w}})
     );
 
     tempsense temp0 (
@@ -154,7 +161,7 @@ module user_project_wrapper #(
     `endif
 
         .fifo_i(data_in_w),
-        .fifo_rdy_i(config_w[0]),
+        .fifo_rdy_i(trigger_in_w),
         .fifo_ack_o(dac_out_w[2]),
         .fifo_full_o(dac_out_w[3]),
         .fifo_empty_o(dac_out_w[4]),

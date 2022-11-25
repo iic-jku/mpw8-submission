@@ -45,6 +45,11 @@
 `endif
 
 module audiodac (
+`ifdef USE_POWER_PINS
+    inout 				vccd1,	// User area 1 1.8V supply
+    inout 				vssd1,	// User area 1 digital ground
+`endif
+
 	// FIFO interface
 	input		[15:0]	fifo_i,		// data is signed INT
 	input				fifo_rdy_i,

@@ -12,6 +12,10 @@
 `define __CONFIG_REG__
 
 module config_reg (
+`ifdef USE_POWER_PINS
+    inout 				vccd1,	// User area 1 1.8V supply
+    inout 				vssd1,	// User area 1 digital ground
+`endif
 	input				rst_n_i,
 	input				clk_i,
 	input				reg_wr_i,
@@ -22,15 +26,15 @@ module config_reg (
 	output reg [15:0]	reg2_o,
 	output reg [15:0]	reg3_o,
 	input [2:0]			mux_adr_i,
-	input [7:0]			mux0_i,
-	input [7:0]			mux1_i,
-	input [7:0]			mux2_i,
-	input [7:0]			mux3_i,
-	input [7:0]			mux4_i,
-	input [7:0]			mux5_i,
-	input [7:0]			mux6_i,
-	input [7:0]			mux7_i,
-	output wire [7:0]	mux_o
+	input [5:0]			mux0_i,
+	input [5:0]			mux1_i,
+	input [5:0]			mux2_i,
+	input [5:0]			mux3_i,
+	input [5:0]			mux4_i,
+	input [5:0]			mux5_i,
+	input [5:0]			mux6_i,
+	input [5:0]			mux7_i,
+	output wire [5:0]	mux_o
 );
 
 	always @(posedge clk_i) begin
@@ -59,7 +63,7 @@ assign mux_o =	(mux_adr_i==3'd0) ? mux0_i :
 				(mux_adr_i==3'd5) ? mux5_i :
 				(mux_adr_i==3'd6) ? mux6_i :
 				(mux_adr_i==3'd7) ? mux7_i :
-				8'b0;
+				6'b0;
 
 endmodule // config_reg
 
