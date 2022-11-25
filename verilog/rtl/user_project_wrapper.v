@@ -28,6 +28,13 @@
  *
  *-------------------------------------------------------------
  */
+`ifndef MPRJ_IO_PADS
+`define MPRJ_IO_PADS 38
+`endif
+
+`include "config_reg.v"
+`include "audiodac.v"
+`include "tempsense.v"
 
 module user_project_wrapper #(
     parameter BITS = 32
@@ -82,41 +89,86 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-user_proj_example mprj (
-`ifdef USE_POWER_PINS
-	.vccd1(vccd1),	// User area 1 1.8V power
-	.vssd1(vssd1),	// User area 1 digital ground
-`endif
+    wire        reset_n_w =         io_in[5];
+    wire        clk_w =             io_in[6];
+    wire [15:0] data_in_w =         io_in[22:7];
+    wire [2:0]  data_out_sel_w =    io_in[25:23];
+    wire        config_wr_w =       io_in[26];
+    wire [1:0]  config_adr_w =      io_in[28:27];
+    wire        trigger_in_w =      io_in[29];
+    wire [5:0]  temp_dac_w;
+    wire [11:0] temp_tick_w;
+    wire        temp_done_w;
+    wire [5:0]  dac_out_w;
+    wire [15:0] reg0_w;
+    wire [15:0] reg1_w;
+    wire [15:0] reg2_w;
+    wire [15:0] reg3_w;
+    wire        dummy_w =           reg3_w[15];
 
-    .wb_clk_i(wb_clk_i),
-    .wb_rst_i(wb_rst_i),
+    config_reg cfg_reg0 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
 
-    // MGMT SoC Wishbone Slave
+        .rst_n_i(reset_n_w),
+        .clk_i(clk_w),
+        .reg_wr_i(config_wr_w),
+        .reg_adr_i(config_adr_w),
+        .reg_dat_i(data_in_w),
+        .reg0_o(reg0_w),
+        .reg1_o(reg1_w),
+        .reg2_o(reg2_w),
+        .reg3_o(reg3_w),
+        .mux_adr_i(data_out_sel_w),
+        .mux_o(io_out[37:30]),
+        .mux0_i({dummy_w,temp_dac_w,temp_done_w}),
+        .mux1_i(temp_tick_w[7:0]),
+        .mux2_i({{4{dummy_w}},temp_tick_w[11:8]}),
+        .mux3_i({{2{dummy_w}},dac_out_w}),
+        .mux4_i({8{dummy_w}}),
+        .mux5_i({8{dummy_w}}),
+        .mux6_i({8{dummy_w}}),
+        .mux7_i({8{dummy_w}})
+    );
 
-    .wbs_cyc_i(wbs_cyc_i),
-    .wbs_stb_i(wbs_stb_i),
-    .wbs_we_i(wbs_we_i),
-    .wbs_sel_i(wbs_sel_i),
-    .wbs_adr_i(wbs_adr_i),
-    .wbs_dat_i(wbs_dat_i),
-    .wbs_ack_o(wbs_ack_o),
-    .wbs_dat_o(wbs_dat_o),
+    tempsense temp0 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
 
-    // Logic Analyzer
+        .clk(clk_w),
+        .rst_n(reset_n_w),
+        .start_conv_in(trigger_in_w),
+        .vdac_result_out(temp_dac_w),
+        .tick_result_out(temp_tick_w),
+        .conversion_finished_out(temp_done_w)
+    );
 
-    .la_data_in(la_data_in),
-    .la_data_out(la_data_out),
-    .la_oenb (la_oenb),
+    audiodac adac0 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
 
-    // IO Pads
-
-    .io_in (io_in),
-    .io_out(io_out),
-    .io_oeb(io_oeb),
-
-    // IRQ
-    .irq(user_irq)
-);
+        .fifo_i(data_in_w),
+        .fifo_rdy_i(config_w[0]),
+        .fifo_ack_o(dac_out_w[2]),
+        .fifo_full_o(dac_out_w[3]),
+        .fifo_empty_o(dac_out_w[4]),
+        .rst_n_i(reset_n_w),
+        .clk_i(clk_w),
+        .mode_i(reg0_w[0]),
+        .volume_i(reg0_w[4:1]),
+        .osr_i(reg0_w[6:5]),
+        .ds_o(dac_out_w[0]),
+        .ds_n_o(dac_out_w[1]),
+        .tst_fifo_loop_i(reg1_w[0]),
+        .tst_sinegen_en_i(reg1_w[1]),
+        .tst_sinegen_step_i(reg1_w[7:2])
+    );
 
 endmodule	// user_project_wrapper
 

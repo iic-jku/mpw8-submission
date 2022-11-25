@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: 2020 Efabless Corporation
+# OpenLane configuration file for audiodac.v
+#
+# SPDX-FileCopyrightText: 2022 Manuel Moser, Michael Herber, Harald Pretl
+# Johannes Kepler University, Institute for Integrated Circuits
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +20,11 @@ set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) audiodac
 
+# Set clock details
+set ::env(CLOCK_PORT) {clk_i}
+set ::env(CLOCK_NET) {clk_i}
+set ::env(CLOCK_PERIOD) 50
+
 set ::env(VERILOG_FILES) "\
 	$::env(DESIGNS)/verilog/rtl/audiodac.v \
 	$::env(DESIGNS)/verilog/rtl/iic_dsmod.v \
@@ -25,10 +33,6 @@ set ::env(VERILOG_FILES) "\
 
 # PDN on Macro Level
 set ::env(DESIGN_IS_CORE) 0
-
-# Set clock details
-set ::env(CLOCK_PORT) {clk_i}
-set ::env(CLOCK_PERIOD) "50"
 
 # Design has hold violations, trying this to fix it
 #set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) "0.7"

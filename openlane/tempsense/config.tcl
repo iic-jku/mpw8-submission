@@ -24,7 +24,7 @@ set ::env(DESIGN_NAME) tempsense
 set ::env(CLOCK_PORT) "clk"
 set ::env(CLOCK_NET) "clk"
 set ::env(CLOCK_TREE_SYNTH) 1
-set ::env(CLOCK_PERIOD) 100
+set ::env(CLOCK_PERIOD) 50
 
 # Input files
 set ::env(VERILOG_FILES) "\

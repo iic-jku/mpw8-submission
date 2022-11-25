@@ -64,7 +64,7 @@ module audiodac (
 	// test modes
 	input				tst_fifo_loop_i,
 	input				tst_sinegen_en_i,
-	input		[4:0]	tst_sinegen_step_i
+	input		[5:0]	tst_sinegen_step_i
 );
 	
 	// parameters for sine generator and FIFO
