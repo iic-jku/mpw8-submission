@@ -98,8 +98,8 @@ module user_project_wrapper #(
     wire        config_wr_w =       io_in[26];
     wire [1:0]  config_adr_w =      io_in[28:27];
     wire        trigger_in_w =      io_in[29];
-    wire        adc_in_p =          io_in[30];
-    wire        adc_in_n =          io_in[31];
+    wire        adc_analog_in_p =   analog_io[30-7];
+    wire        adc_analog_in_n =   analog_io[31-7];
     assign      io_out[37:32] =     mux_out_w;
 
     wire [5:0]  mux_out_w;

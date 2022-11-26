@@ -24,7 +24,7 @@
 module vdac #(parameter BITWIDTH = 6)(
   input wire [BITWIDTH-1:0] data,
   input wire enable,
-  output wire vout_ana_
+  output wire vout_analog
   );
   genvar i;
   generate 
@@ -33,7 +33,7 @@ module vdac #(parameter BITWIDTH = 6)(
         .sign(data[BITWIDTH-1]),
         .data(data[i]),
         .enable(enable),
-        .vout_ana_(vout_ana_)
+        .vout_analog(vout_analog)
       );
     end
   endgenerate
@@ -43,7 +43,7 @@ module vdac #(parameter BITWIDTH = 6)(
     .sign(1'b0),
     .data(1'b0),
     .enable(enable & (~data[BITWIDTH-1])),
-    .vout_ana_(vout_ana_)
+    .vout_analog(vout_analog)
   );
 endmodule
 

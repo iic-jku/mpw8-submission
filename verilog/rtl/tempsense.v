@@ -58,20 +58,20 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   wire [DAC_RESOLUTION-1:0] dac_data_w;
   wire dac_enable_w;
   wire dcdc_data_w;
-  wire dcdc_enable_ana_w;
+  wire dcdc_enable_analog_w;
   vdac #(.BITWIDTH(DAC_RESOLUTION)) dac
         (
          .data(dac_data_w),
          .enable(dac_enable_w),
-         .vout_ana_(dcdc_enable_ana_w)
+         .vout_analog_(dcdc_enable_analog_w)
         );
 
   // Digitally-Controled Delay Cell
-  wire dcdc_trig_n_ana_w;
+  wire dcdc_trig_n_analog_w;
   wire dcdc_trigd_w;
   wire dcdc_trigd_n_w;
-  sky130_fd_sc_hd__einvp_1 dcdc (.A(dcdc_data_w), .TE(dcdc_enable_ana_w), .Z(dcdc_trig_n_ana_w));
-  sky130_fd_sc_hd__inv_4   inv1 (.A(dcdc_trig_n_ana_w),.Y(dcdc_trigd_w));
+  sky130_fd_sc_hd__einvp_1 dcdc (.A(dcdc_data_w), .TE(dcdc_enable_analog_w), .Z(dcdc_trig_n_analog_w));
+  sky130_fd_sc_hd__inv_4   inv1 (.A(dcdc_trig_n_analog_w),.Y(dcdc_trigd_w));
   sky130_fd_sc_hd__inv_12  inv2 (.A(dcdc_trigd_w),.Y(dcdc_trigd_n_w));
   
 endmodule

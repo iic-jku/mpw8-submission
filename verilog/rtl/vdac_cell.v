@@ -24,7 +24,7 @@ module vdac_cell #(parameter PARALLEL_CELLS = 4)(
   input wire sign,
   input wire data,
   input wire enable,
-  output wire vout_ana_
+  output wire vout_analog
   );
   wire en_vref, en_pupd, npu_pd;
 
@@ -36,8 +36,8 @@ module vdac_cell #(parameter PARALLEL_CELLS = 4)(
   genvar i;
   generate
     for (i=0; i < PARALLEL_CELLS; i=i+1) begin : einvp_batch
-      sky130_fd_sc_hd__einvp_1 pupd (.A(npu_pd), .TE(en_pupd), .Z(vout_ana_));
-      sky130_fd_sc_hd__einvp_1 vref (.A(vout_ana_), .TE(en_vref), .Z(vout_ana_));
+      sky130_fd_sc_hd__einvp_1 pupd (.A(npu_pd), .TE(en_pupd), .Z(vout_analog));
+      sky130_fd_sc_hd__einvp_1 vref (.A(vout_analog), .TE(en_vref), .Z(vout_analog));
     end
   endgenerate
 endmodule

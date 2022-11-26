@@ -37,7 +37,7 @@ set ::env(VERILOG_FILES) "\
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 # Rexeg to flag nets where buffers are not allowed (analog signals)
-set ::env(RSZ_DONT_TOUCH_RX) "_ana_" 
+set ::env(RSZ_DONT_TOUCH_RX) "analog" 
 
 # Floorplanning
 set ::env(FP_SIZING) "relative"
