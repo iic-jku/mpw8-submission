@@ -1,0 +1,57 @@
+{
+    "DESIGN_NAME": "tempsense",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/tempsense.v", "dir::../../verilog/rtl/tempsense_vdac.v", "dir::../../verilog/rtl/tempsense_vdac_cell.v", "dir::../../verilog/rtl/tempsense_sar_ctrl.v"],
+    "SYNTH_READ_BLACKBOX_LIB": 1,
+    "RSZ_DONT_TOUCH_RX": "analog",
+    "CLOCK_PERIOD": 50,
+    "CLOCK_PORT": "clk",
+    "CLOCK_NET": "clk",
+    "CLOCK_TREE_SYNTH": 1,
+    "FP_SIZING": "relative",
+    "ROUTING_CORES": 8,
+    "FP_PDN_CORE_RING": 0,
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "FP_PDN_HOFFSET": 12,
+    "FP_PDN_VOFFSET": 12,
+    "FP_PDN_HPITCH": 12,
+    "FP_PDN_VPITCH": 24,
+    "PL_BASIC_PLACEMENT": 0,
+    "PL_TARGET_DENSITY": 0.30,
+    "PL_RESIZER_TIMING_OPTIMIZATIONS": 0,
+    "PL_RESIZER_DESIGN_OPTIMIZATIONS": 1,
+    "DPL_CELL_PADDING": 2,
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 0,
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+    "DIODE_INSERTION_STRATEGY": 4,
+    "RUN_CVC": 1,
+    "pdk::sky130*": {
+        "FP_CORE_UTIL": 25,
+        "RT_MAX_LAYER": "met4",
+        "scl::sky130_fd_sc_hd": {
+            "CLOCK_PERIOD": 50
+        },
+        "scl::sky130_fd_sc_hdll": {
+            "CLOCK_PERIOD": 50
+        },
+        "scl::sky130_fd_sc_hs": {
+            "CLOCK_PERIOD": 50
+        },
+        "scl::sky130_fd_sc_ls": {
+            "CLOCK_PERIOD": 50,
+            "SYNTH_MAX_FANOUT": 5
+        },
+        "scl::sky130_fd_sc_ms": {
+            "CLOCK_PERIOD": 50
+        }
+    },
+    "pdk::gf180mcuC": {
+        "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
+        "CLOCK_PERIOD": 50,
+        "FP_CORE_UTIL": 25,
+        "RT_MAX_LAYER": "Metal4",
+        "SYNTH_MAX_FANOUT": 4,
+        "PL_TARGET_DENSITY": 0.30
+    }
+}
