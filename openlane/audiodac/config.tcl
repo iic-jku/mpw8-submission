@@ -27,9 +27,9 @@ set ::env(CLOCK_PERIOD) 50
 
 set ::env(VERILOG_FILES) "\
 	$::env(DESIGNS)/verilog/rtl/audiodac.v \
-	$::env(DESIGNS)/verilog/rtl/iic_dsmod.v \
-	$::env(DESIGNS)/verilog/rtl/iic_fifo.v \
-	$::env(DESIGNS)/verilog/rtl/iic_sinegen.v"
+	$::env(DESIGNS)/verilog/rtl/audiodac_dsmod.v \
+	$::env(DESIGNS)/verilog/rtl/audiodac_fifo.v \
+	$::env(DESIGNS)/verilog/rtl/audiodac_sinegen.v"
 
 # PDN on Macro Level
 set ::env(DESIGN_IS_CORE) 0
@@ -42,7 +42,7 @@ set ::env(DESIGN_IS_CORE) 0
 set ::env(FP_SIZING) "relative"
 set ::env(FP_CORE_UTIL) 25
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
-set ::env(ROUTING_CORES) 4
+set ::env(ROUTING_CORES) 8
 set ::env(RT_MAX_LAYER) {met4}
 set ::env(VDD_NETS) [list {VPWR}]
 set ::env(GND_NETS) [list {VGND}]

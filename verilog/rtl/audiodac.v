@@ -35,13 +35,13 @@
 `define __AUDIODAC__
 
 `ifdef SIM_PYTHON
-	`include "../dig/rtl/iic_dsmod.v"
-	`include "../dig/rtl/iic_fifo.v"
-	`include "../dig/rtl/iic_sinegen.v"
+	`include "../dig/rtl/audiodac_dsmod.v"
+	`include "../dig/rtl/audiodac_fifo.v"
+	`include "../dig/rtl/audiodac_sinegen.v"
  `else 
-	`include "iic_dsmod.v"
-	`include "iic_fifo.v"
-	`include "iic_sinegen.v"
+	`include "audiodac_dsmod.v"
+	`include "audiodac_fifo.v"
+	`include "audiodac_sinegen.v"
 `endif
 
 module audiodac (
@@ -83,7 +83,7 @@ module audiodac (
 	// change 16-bit signed audio data to unsigned data
 	assign				dsmod_data_i = audio + {1'b1,{15{1'b0}}};
 	
-	iic_fifo
+	audiodac_fifo
 		#(16, FIFO_SIZE, 1)
 		fifo0 (
 			.fifo_indata_i(fifo_i),
@@ -98,7 +98,7 @@ module audiodac (
 			.tst_fifo_loop_i(tst_fifo_loop_i)
 		);
 
-	iic_dsmod
+	audiodac_dsmod
 		dsmod0 (	
 			.data_i(dsmod_data_i),
 			.data_rd_o(audio_rd),
@@ -111,7 +111,7 @@ module audiodac (
 			.osr_i(osr_i)
 		);
 
-	iic_sinegen
+	audiodac_sinegen
 		// this module uses parameters, if your implementation does not use params
 		// then delete the following line:
 		#(16, SINE_GENERATOR_LUT_SIZE, SINE_GENERATOR_AMPL)

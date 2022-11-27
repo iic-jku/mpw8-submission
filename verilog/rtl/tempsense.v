@@ -21,7 +21,7 @@
 `define __TEMPSENSE__
 
 `include "tempsense_sar_ctrl.v"
-`include "vdac.v"
+`include "tempsense_vdac.v"
 
 module tempsense #(parameter DAC_RESOLUTION = 6,
                    parameter COUNTER_BITWIDTH = 12) (
@@ -59,11 +59,11 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   wire dac_enable_w;
   wire dcdc_data_w;
   wire dcdc_enable_analog_w;
-  vdac #(.BITWIDTH(DAC_RESOLUTION)) dac
+  tempsense_vdac #(.BITWIDTH(DAC_RESOLUTION)) dac
         (
          .data(dac_data_w),
          .enable(dac_enable_w),
-         .vout_analog_(dcdc_enable_analog_w)
+         .vout_analog(dcdc_enable_analog_w)
         );
 
   // Digitally-Controled Delay Cell
@@ -74,7 +74,7 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   sky130_fd_sc_hd__inv_4   inv1 (.A(dcdc_trig_n_analog_w),.Y(dcdc_trigd_w));
   sky130_fd_sc_hd__inv_12  inv2 (.A(dcdc_trigd_w),.Y(dcdc_trigd_n_w));
   
-endmodule
+endmodule // tempsense
 
 `endif
 `default_nettype wire

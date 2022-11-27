@@ -28,10 +28,10 @@ set ::env(CLOCK_PERIOD) 50
 
 # Input files
 set ::env(VERILOG_FILES) "\
-    $::env(DESIGNS)/verilog/rtl/vdac.v \
-    $::env(DESIGNS)/verilog/rtl/vdac_cell.v \
-    $::env(DESIGNS)/verilog/rtl/tempsense_sar_ctrl.v \
-    $::env(DESIGNS)/verilog/rtl/tempsense.v"
+    $::env(DESIGNS)/verilog/rtl/tempsense.v \
+    $::env(DESIGNS)/verilog/rtl/tempsense_vdac.v \
+    $::env(DESIGNS)/verilog/rtl/tempsense_vdac_cell.v \
+    $::env(DESIGNS)/verilog/rtl/tempsense_sar_ctrl.v"
 
 # Interpret instantiated SKY130-Standardcells as blackbox
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
@@ -43,7 +43,7 @@ set ::env(RSZ_DONT_TOUCH_RX) "analog"
 set ::env(FP_SIZING) "relative"
 set ::env(FP_CORE_UTIL) 25
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
-set ::env(ROUTING_CORES) 4
+set ::env(ROUTING_CORES) 8
 
 # Power distribution network settings
 set ::env(FP_PDN_HOFFSET) 12

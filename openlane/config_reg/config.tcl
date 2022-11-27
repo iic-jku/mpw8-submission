@@ -35,7 +35,7 @@ set ::env(DESIGN_IS_CORE) 0
 set ::env(FP_SIZING) "relative"
 set ::env(FP_CORE_UTIL) 10
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
-set ::env(ROUTING_CORES) 4
+set ::env(ROUTING_CORES) 8
 set ::env(RT_MAX_LAYER) {met4}
 set ::env(VDD_NETS) [list {VPWR}]
 set ::env(GND_NETS) [list {VGND}]

@@ -172,7 +172,8 @@ module tempsense_sar_ctrl #(parameter DAC_RESOLUTION = 6,
                          state_r==compare     ? (compare_end_w ? charge_dcdc : state_r) :
                          state_r==count_delay ? (is_returning_to_waitstate_w ? waitstate : count_delay) :
                          waitstate;
-endmodule
+
+endmodule //tempsense_sar_ctrl
 
 `endif
 `default_nettype wire
