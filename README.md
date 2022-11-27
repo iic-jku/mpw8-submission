@@ -4,6 +4,13 @@
 
 (c) 2022 **Harald Pretl, Manuel Moser, and Michael Herber**, Institute for Integrated Circuits, Johannes Kepler University, Linz
 
+## TODO
+
+* [ ] Add more temperature sensors (one in each corner)
+* [ ] Connect digital signals to LA
+* [ ] Include SAR-ADC
+* [ ] Maybe include PLL from Christof
+
 ## 13b SAR-ADC
 
 ## Synthesizable digital temperature sensor
