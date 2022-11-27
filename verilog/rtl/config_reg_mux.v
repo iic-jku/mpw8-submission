@@ -1,5 +1,5 @@
 /*
- * Configuration register (2x 16b)
+ * Configuration register (4x 16b) and output mux
  *
  * (c) 2022 Harald Pretl (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
@@ -8,10 +8,10 @@
  */
 
 `default_nettype none
-`ifndef __CONFIG_REG__
-`define __CONFIG_REG__
+`ifndef __CONFIG_REG_MUX__
+`define __CONFIG_REG_MUX__
 
-module config_reg (
+module config_reg_mux (
 `ifdef USE_POWER_PINS
     inout 				vccd1,	// User area 1 1.8V supply
     inout 				vssd1,	// User area 1 digital ground
@@ -34,7 +34,18 @@ module config_reg (
 	input [5:0]			mux5_i,
 	input [5:0]			mux6_i,
 	input [5:0]			mux7_i,
-	output wire [5:0]	mux_o
+	output wire [5:0]	mux_o,
+	input [1:0]			temp_sel_i,
+	input [5:0]			temp0_dac_i,
+	input [5:0]			temp1_dac_i,
+	input [5:0]			temp2_dac_i,
+	input [5:0]			temp3_dac_i,
+	output wire [5:0]	temp_dac_o,
+	input [11:0]		temp0_ticks_i,
+	input [11:0]		temp1_ticks_i,
+	input [11:0]		temp2_ticks_i,
+	input [11:0]		temp3_ticks_i,
+	output wire [11:0]	temp_ticks_o
 );
 
 	always @(posedge clk_i) begin
@@ -65,7 +76,19 @@ assign mux_o =	(mux_adr_i==3'd0) ? mux0_i :
 				(mux_adr_i==3'd7) ? mux7_i :
 				6'b0;
 
-endmodule // config_reg
+assign temp_dac_o =	(temp_sel_i==2'd0) ? temp0_dac_i :
+					(temp_sel_i==2'd1) ? temp1_dac_i :
+					(temp_sel_i==2'd2) ? temp2_dac_i :
+					(temp_sel_i==2'd3) ? temp3_dac_i :
+					6'b0;
+
+assign temp_ticks_o =	(temp_sel_i==2'd0) ? temp0_ticks_i :
+						(temp_sel_i==2'd1) ? temp1_ticks_i :
+						(temp_sel_i==2'd2) ? temp2_ticks_i :
+						(temp_sel_i==2'd3) ? temp3_ticks_i :
+						12'b0;
+
+endmodule // config_reg_mux
 
 `endif
 `default_nettype wire

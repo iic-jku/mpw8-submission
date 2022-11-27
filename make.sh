@@ -40,12 +40,12 @@ stage_result () {
 # Harden macros
 #call_flow audiodac
 #call_flow tempsense
-#call_flow config_reg
+#call_flow config_reg_mux
 
 # Stage results of hardening
-stage_result audiodac
-stage_result tempsense
-stage_result config_reg
+#stage_result audiodac
+#stage_result tempsense
+#stage_result config_reg_mux
 
 # Assemble top-level
 call_flow user_project_wrapper

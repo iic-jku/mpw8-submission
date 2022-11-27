@@ -32,7 +32,7 @@
 `define MPRJ_IO_PADS 38
 `endif
 
-`include "config_reg.v"
+`include "config_reg_mux.v"
 `include "audiodac.v"
 `include "tempsense.v"
 //`include "/foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
@@ -103,17 +103,17 @@ module user_project_wrapper #(
     assign      io_out[37:32] =     mux_out_w;
 
     wire [5:0]  mux_out_w;
-    wire [5:0]  temp_dac_w;
-    wire [11:0] temp_tick_w;
-    wire        temp_done_w;
-    wire [5:0]  dac_out_w;
+    wire [5:0]  temp_dac_w, temp0_dac_w, temp1_dac_w, temp2_dac_w, temp3_dac_w;
+    wire [11:0] temp_tick_w, temp0_tick_w, temp1_tick_w, temp2_tick_w, temp3_tick_w;
+    wire        temp0_done_w, temp1_done_w, temp2_done_w, temp3_done_w;
+    wire [5:0]  adac_out_w;
     wire [15:0] reg0_w;
     wire [15:0] reg1_w;
     wire [15:0] reg2_w;
     wire [15:0] reg3_w;
-    wire        dummy_w =           reg0_w[15];
+    wire        dummy_w = reg0_w[15];
 
-    config_reg cfg_reg0 (
+    config_reg_mux cfg_reg0 (
     `ifdef USE_POWER_PINS
         .vccd1(vccd1),	// User area 1 1.8V power
         .vssd1(vssd1),	// User area 1 digital ground
@@ -130,14 +130,25 @@ module user_project_wrapper #(
         .reg3_o(reg3_w),
         .mux_adr_i(data_out_sel_w),
         .mux_o(mux_out_w),
-        .mux0_i({{5{dummy_w}},temp_done_w}),
+        .mux0_i({{2{dummy_w}},temp3_done_w,temp2_done_w,temp1_done_w,temp0_done_w}),
         .mux1_i(temp_dac_w),
         .mux2_i(temp_tick_w[5:0]),
         .mux3_i(temp_tick_w[11:6]),
-        .mux4_i(dac_out_w),
+        .mux4_i(adac_out_w),
         .mux5_i({6{dummy_w}}),
         .mux6_i({6{dummy_w}}),
-        .mux7_i({6{dummy_w}})
+        .mux7_i({6{dummy_w}}),
+        .temp_sel_i(reg0_w[8:7]),
+        .temp0_dac_i(temp0_dac_w),
+        .temp1_dac_i(temp1_dac_w),
+        .temp2_dac_i(temp2_dac_w),
+        .temp3_dac_i(temp3_dac_w),
+        .temp_dac_o(temp_dac_w),
+        .temp0_ticks_i(temp0_tick_w),
+        .temp1_ticks_i(temp1_tick_w),
+        .temp2_ticks_i(temp2_tick_w),
+        .temp3_ticks_i(temp3_tick_w),
+        .temp_ticks_o(temp_tick_w)
     );
 
     tempsense temp0 (
@@ -149,9 +160,48 @@ module user_project_wrapper #(
         .clk(clk_w),
         .rst_n(reset_n_w),
         .start_conv_in(trigger_in_w),
-        .vdac_result_out(temp_dac_w),
-        .tick_result_out(temp_tick_w),
-        .conversion_finished_out(temp_done_w)
+        .vdac_result_out(temp0_dac_w),
+        .tick_result_out(temp0_tick_w),
+        .conversion_finished_out(temp0_done_w)
+    );
+    tempsense temp1 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
+
+        .clk(clk_w),
+        .rst_n(reset_n_w),
+        .start_conv_in(trigger_in_w),
+        .vdac_result_out(temp1_dac_w),
+        .tick_result_out(temp1_tick_w),
+        .conversion_finished_out(temp1_done_w)
+    );
+    tempsense temp2 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
+
+        .clk(clk_w),
+        .rst_n(reset_n_w),
+        .start_conv_in(trigger_in_w),
+        .vdac_result_out(temp2_dac_w),
+        .tick_result_out(temp2_tick_w),
+        .conversion_finished_out(temp2_done_w)
+    );
+    tempsense temp3 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
+
+        .clk(clk_w),
+        .rst_n(reset_n_w),
+        .start_conv_in(trigger_in_w),
+        .vdac_result_out(temp3_dac_w),
+        .tick_result_out(temp3_tick_w),
+        .conversion_finished_out(temp3_done_w)
     );
 
     audiodac adac0 (
@@ -162,16 +212,16 @@ module user_project_wrapper #(
 
         .fifo_i(data_in_w),
         .fifo_rdy_i(trigger_in_w),
-        .fifo_ack_o(dac_out_w[2]),
-        .fifo_full_o(dac_out_w[3]),
-        .fifo_empty_o(dac_out_w[4]),
+        .fifo_ack_o(adac_out_w[2]),
+        .fifo_full_o(adac_out_w[3]),
+        .fifo_empty_o(adac_out_w[4]),
         .rst_n_i(reset_n_w),
         .clk_i(clk_w),
         .mode_i(reg0_w[0]),
         .volume_i(reg0_w[4:1]),
         .osr_i(reg0_w[6:5]),
-        .ds_o(dac_out_w[0]),
-        .ds_n_o(dac_out_w[1]),
+        .ds_o(adac_out_w[0]),
+        .ds_n_o(adac_out_w[1]),
         .tst_fifo_loop_i(reg1_w[0]),
         .tst_sinegen_en_i(reg1_w[1]),
         .tst_sinegen_step_i(reg1_w[7:2])
