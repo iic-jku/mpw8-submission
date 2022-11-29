@@ -1,0 +1,6 @@
+      LAYER met4 ;
+	      RECT 5.520 10.640 144.440 138.960 ;
+  END
+END tempsense
+END LIBRARY
+

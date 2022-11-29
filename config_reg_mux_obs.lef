@@ -1,0 +1,6 @@
+      LAYER met4 ;
+	      RECT 3.290 8.880 298.010 289.640 ;
+  END
+END config_reg_mux
+END LIBRARY
+
