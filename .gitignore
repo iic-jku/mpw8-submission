@@ -7,3 +7,8 @@
 *.vcd
 *.gtkw
 .DS_Store
+dependencies
+venv
+caravel
+deps
+mgmt_core_wrapper

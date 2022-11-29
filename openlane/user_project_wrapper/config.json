@@ -1,15 +1,16 @@
 {
+    "DESIGN_IS_CORE": 1,
     "DESIGN_NAME": "user_project_wrapper",
     "VERILOG_FILES": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/user_project_wrapper.v"],
     "CLOCK_PERIOD": 50,
     "CLOCK_PORT": "io_in[6]",
-    "CLOCK_NET": ["cfg_reg0.clk_i", "temp0.clk", "adac0.clk_i"],
+    "CLOCK_NET": ["cfg_reg0.clk_i", "temp0.clk", "temp1.clk", "temp2.clk", "temp3.clk", "adac0.clk_i", "adc0.clk_vcm"],
     "RSZ_DONT_TOUCH_RX": ["analog"],
-    "FP_PDN_MACRO_HOOKS": ["cfg_reg0 vccd1 vssd1", "temp0 vccd1 vssd1", "adac0 vccd1 vssd1"],
+    "FP_PDN_MACRO_HOOKS": ["cfg_reg0 vccd1 vssd1 vccd1 vssd1, temp0 vccd1 vssd1 vccd1 vssd1, temp1 vccd1 vssd1 vccd1 vssd1, temp2 vccd1 vssd1 vccd1 vssd1, temp3 vccd1 vssd1 vccd1 vssd1, adac0 vccd1 vssd1 vccd1 vssd1, adc0 vccd2 vssd2 vccd2 vssd2"],
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/config_reg_mux.v", "dir::../../verilog/rtl/audiodac.v", "dir::../../verilog/rtl/tempsense.v"],
-    "EXTRA_LEFS": ["dir::../../lef/config_reg_mux.lef", "dir::../../lef/audiodac.lef", "dir::../../lef/tempsense.lef"],
-    "EXTRA_GDS_FILES": ["dir::../../gds/config_reg_mux.gds", "dir::../../gds/audiodac.gds", "dir::../../gds/tempsense.gds"],
+    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/config_reg_mux.v", "dir::../../verilog/rtl/audiodac.v", "dir::../../verilog/rtl/tempsense.v", "dir::../../macro/adc_top.v"],
+    "EXTRA_LEFS": ["dir::../../lef/config_reg_mux.lef", "dir::../../lef/audiodac.lef", "dir::../../lef/tempsense.lef", "dir::../../macro/adc_top.lef"],
+    "EXTRA_GDS_FILES": ["dir::../../gds/config_reg_mux.gds", "dir::../../gds/audiodac.gds", "dir::../../gds/tempsense.gds", "dir::../../macro/adc_top.gds"],
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_ELABORATE_ONLY": 1,
     "PL_RANDOM_GLB_PLACEMENT": 1,
@@ -47,8 +48,8 @@
     "FP_PDN_HWIDTH": 3.1,
     "FP_PDN_VSPACING": "expr::(5 * $FP_PDN_CORE_RING_VWIDTH)",
     "FP_PDN_HSPACING": "expr::(5 * $FP_PDN_CORE_RING_HWIDTH)",
-    "VDD_NETS": ["vccd1", "vccd2","vdda1","vdda2"],
-    "GND_NETS": ["vssd1", "vssd2","vssa1","vssa2"],
+    "VDD_NETS": ["vccd1 vccd2 vdda1 vdda2"],
+    "GND_NETS": ["vssd1 vssd2 vssa1 vssa2"],
     "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
     "pdk::sky130*": {
         "RT_MAX_LAYER": "met4",
@@ -73,15 +74,10 @@
      },
     "pdk::gf180mcuC": {
         "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
-        "FP_PDN_CHECK_NODES": 0,
-        "FP_PDN_ENABLE_RAILS": 0,
         "RT_MAX_LAYER": "Metal4",
         "DIE_AREA": "0 0 3000 3000",
         "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper_gf180mcu.def",
         "PL_OPENPHYSYN_OPTIMIZATIONS": 0,
-        "DIODE_INSERTION_STRATEGY": 0,
-        "FP_PDN_CHECK_NODES": 0,
-        "MAGIC_WRITE_FULL_LEF": 0,
-        "FP_PDN_ENABLE_RAILS": 0
+        "MAGIC_WRITE_FULL_LEF": 0
    }
 }

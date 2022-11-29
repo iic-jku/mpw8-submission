@@ -18,6 +18,9 @@
 // Reason -> no buffers on analog input nets
 //***************************************
 
+`ifndef __ADC_TOP__
+`define __ADC_TOP__
+
 //Top module ADC Control
 module adc_top(
    `ifdef USE_POWER_PINS
@@ -37,3 +40,7 @@ module adc_top(
    );
 
 endmodule // adc_top
+
+`endif
+
+`default_nettype wire
