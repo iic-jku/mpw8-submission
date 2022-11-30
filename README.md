@@ -6,10 +6,12 @@
 
 ## TODO
 
-* [ ] Add more temperature sensors (one in each corner)
-* [ ] Connect digital signals to LA
-* [ ] Include SAR-ADC
+* [x] Add more temperature sensors (one in each corner)
+* [x] Connect digital signals to LA
+* [x] Include SAR-ADC
+* [ ] Fix pdn shorts in ADC
 * [ ] Maybe include PLL from Christof
+* [ ] Make clock and reset of config reg async
 
 ## 13b SAR-ADC
 
