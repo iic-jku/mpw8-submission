@@ -12,6 +12,7 @@
 * [ ] Fix pdn shorts in ADC
 * [ ] Maybe include PLL from Christof
 * [ ] Make clock and reset of config reg async
+* [ ] Use define.v in user_proj_wrapper
 
 ## 13b SAR-ADC
 
