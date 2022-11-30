@@ -13,6 +13,7 @@
 * [ ] Maybe include PLL from Christof
 * [ ] Make clock and reset of config reg async
 * [ ] Use define.v in user_proj_wrapper
+* [ ] Check settings is user_defines, mgmt vs user
 
 ## 13b SAR-ADC
 
