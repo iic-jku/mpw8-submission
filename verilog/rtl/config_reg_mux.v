@@ -17,7 +17,7 @@ module config_reg_mux (
     inout 				vssd1,	// User area 1 digital ground
 `endif
 	input				rst_n_i,
-	input				clk_i,
+
 	input				reg_wr_i,
 	input [1:0]			reg_adr_i,
 	input [15:0]		reg_dat_i,
@@ -25,6 +25,7 @@ module config_reg_mux (
 	output reg [15:0]	reg1_o,
 	output reg [15:0]	reg2_o,
 	output reg [15:0]	reg3_o,
+	
 	input [2:0]			mux_adr_i,
 	input [5:0]			mux0_i,
 	input [5:0]			mux1_i,
@@ -35,6 +36,7 @@ module config_reg_mux (
 	input [5:0]			mux6_i,
 	input [5:0]			mux7_i,
 	output wire [5:0]	mux_o,
+	
 	input [1:0]			temp_sel_i,
 	input [5:0]			temp0_dac_i,
 	input [5:0]			temp1_dac_i,
@@ -48,21 +50,19 @@ module config_reg_mux (
 	output wire [11:0]	temp_ticks_o
 );
 
-	always @(posedge clk_i) begin
-		if (!rst_n_i) begin
+	always @(posedge reg_wr_i or negedge rst_n_i) begin
+		if (rst_n_i == 1'b0) begin
 			reg0_o <= 16'b0;
 			reg1_o <= 16'b0;
 			reg2_o <= 16'b0;
 			reg3_o <= 16'b0;
 		end else begin
-			if (reg_wr_i) begin
-				case (reg_adr_i)
-					2'd0: reg0_o <= reg_dat_i;
-					2'd1: reg1_o <= reg_dat_i;
-					2'd2: reg2_o <= reg_dat_i;
-					2'd3: reg3_o <= reg_dat_i;
-				endcase
-			end
+			case (reg_adr_i)
+				2'd0: reg0_o <= reg_dat_i;
+				2'd1: reg1_o <= reg_dat_i;
+				2'd2: reg2_o <= reg_dat_i;
+				2'd3: reg3_o <= reg_dat_i;
+			endcase
 		end
 	end
 

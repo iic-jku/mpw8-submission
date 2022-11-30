@@ -4,7 +4,7 @@
     "VERILOG_FILES": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/user_project_wrapper.v"],
     "CLOCK_PERIOD": 50,
     "CLOCK_PORT": "io_in[6]",
-    "CLOCK_NET": ["cfg_reg0.clk_i", "temp0.clk", "temp1.clk", "temp2.clk", "temp3.clk", "adac0.clk_i", "adc0.clk_vcm"],
+    "CLOCK_NET": ["cfg_reg0.reg_wr_i", "temp0.clk", "temp1.clk", "temp2.clk", "temp3.clk", "adac0.clk_i", "adc0.clk_vcm"],
     "RSZ_DONT_TOUCH_RX": ["analog"],
     "FP_PDN_MACRO_HOOKS": ["cfg_reg0 vccd1 vssd1 vccd1 vssd1, temp0 vccd1 vssd1 vccd1 vssd1, temp1 vccd1 vssd1 vccd1 vssd1, temp2 vccd1 vssd1 vccd1 vssd1, temp3 vccd1 vssd1 vccd1 vssd1, adac0 vccd1 vssd1 vccd1 vssd1, adc0 vccd2 vssd2 vccd2 vssd2"],
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",

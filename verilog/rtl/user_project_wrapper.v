@@ -28,10 +28,8 @@
  *
  *-------------------------------------------------------------
  */
-`ifndef MPRJ_IO_PADS
-`define MPRJ_IO_PADS 38
-`endif
 
+`include "defines.v"
 `include "config_reg_mux.v"
 `include "audiodac.v"
 `include "tempsense.v"
@@ -156,7 +154,6 @@ module user_project_wrapper #(
     `endif
 
         .rst_n_i(reset_n_w),
-        .clk_i(clk_w),
         .reg_wr_i(config_wr_w),
         .reg_adr_i(config_adr_w),
         .reg_dat_i(data_in_w),
