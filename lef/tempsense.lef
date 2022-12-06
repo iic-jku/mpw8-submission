@@ -1,0 +1,291 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO tempsense
+  CLASS BLOCK ;
+  FOREIGN tempsense ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 150.000 BY 150.000 ;
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 18.950 0.000 19.230 4.000 ;
+    END
+  END clk
+  PIN conversion_finished_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 130.730 0.000 131.010 4.000 ;
+    END
+  END conversion_finished_out
+  PIN rst_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 56.210 0.000 56.490 4.000 ;
+    END
+  END rst_n
+  PIN start_conv_in
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 93.470 0.000 93.750 4.000 ;
+    END
+  END start_conv_in
+  PIN tick_result_out[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 6.840 150.000 7.440 ;
+    END
+  END tick_result_out[0]
+  PIN tick_result_out[10]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 129.240 150.000 129.840 ;
+    END
+  END tick_result_out[10]
+  PIN tick_result_out[11]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 141.480 150.000 142.080 ;
+    END
+  END tick_result_out[11]
+  PIN tick_result_out[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 19.080 150.000 19.680 ;
+    END
+  END tick_result_out[1]
+  PIN tick_result_out[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 31.320 150.000 31.920 ;
+    END
+  END tick_result_out[2]
+  PIN tick_result_out[3]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 43.560 150.000 44.160 ;
+    END
+  END tick_result_out[3]
+  PIN tick_result_out[4]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 55.800 150.000 56.400 ;
+    END
+  END tick_result_out[4]
+  PIN tick_result_out[5]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 68.040 150.000 68.640 ;
+    END
+  END tick_result_out[5]
+  PIN tick_result_out[6]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 80.280 150.000 80.880 ;
+    END
+  END tick_result_out[6]
+  PIN tick_result_out[7]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 92.520 150.000 93.120 ;
+    END
+  END tick_result_out[7]
+  PIN tick_result_out[8]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 104.760 150.000 105.360 ;
+    END
+  END tick_result_out[8]
+  PIN tick_result_out[9]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 146.000 117.000 150.000 117.600 ;
+    END
+  END tick_result_out[9]
+  PIN vccd1
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 16.720 10.640 18.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 40.720 10.640 42.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 64.720 10.640 66.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 88.720 10.640 90.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 112.720 10.640 114.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 136.720 10.640 138.320 138.960 ;
+    END
+  END vccd1
+  PIN vdac_result_out[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 12.960 4.000 13.560 ;
+    END
+  END vdac_result_out[0]
+  PIN vdac_result_out[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 37.440 4.000 38.040 ;
+    END
+  END vdac_result_out[1]
+  PIN vdac_result_out[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 61.920 4.000 62.520 ;
+    END
+  END vdac_result_out[2]
+  PIN vdac_result_out[3]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 86.400 4.000 87.000 ;
+    END
+  END vdac_result_out[3]
+  PIN vdac_result_out[4]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 110.880 4.000 111.480 ;
+    END
+  END vdac_result_out[4]
+  PIN vdac_result_out[5]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 135.360 4.000 135.960 ;
+    END
+  END vdac_result_out[5]
+  PIN vssd1
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 28.720 10.640 30.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 52.720 10.640 54.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 76.720 10.640 78.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 100.720 10.640 102.320 138.960 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 124.720 10.640 126.320 138.960 ;
+    END
+  END vssd1
+  OBS
+      LAYER li1 ;
+        RECT 5.520 10.795 144.440 138.805 ;
+      LAYER met1 ;
+        RECT 5.520 10.640 144.440 138.960 ;
+      LAYER met2 ;
+        RECT 7.450 4.280 142.500 141.965 ;
+        RECT 7.450 4.000 18.670 4.280 ;
+        RECT 19.510 4.000 55.930 4.280 ;
+        RECT 56.770 4.000 93.190 4.280 ;
+        RECT 94.030 4.000 130.450 4.280 ;
+        RECT 131.290 4.000 142.500 4.280 ;
+      LAYER met3 ;
+        RECT 4.000 141.080 145.600 141.945 ;
+        RECT 4.000 136.360 146.000 141.080 ;
+        RECT 4.400 134.960 146.000 136.360 ;
+        RECT 4.000 130.240 146.000 134.960 ;
+        RECT 4.000 128.840 145.600 130.240 ;
+        RECT 4.000 118.000 146.000 128.840 ;
+        RECT 4.000 116.600 145.600 118.000 ;
+        RECT 4.000 111.880 146.000 116.600 ;
+        RECT 4.400 110.480 146.000 111.880 ;
+        RECT 4.000 105.760 146.000 110.480 ;
+        RECT 4.000 104.360 145.600 105.760 ;
+        RECT 4.000 93.520 146.000 104.360 ;
+        RECT 4.000 92.120 145.600 93.520 ;
+        RECT 4.000 87.400 146.000 92.120 ;
+        RECT 4.400 86.000 146.000 87.400 ;
+        RECT 4.000 81.280 146.000 86.000 ;
+        RECT 4.000 79.880 145.600 81.280 ;
+        RECT 4.000 69.040 146.000 79.880 ;
+        RECT 4.000 67.640 145.600 69.040 ;
+        RECT 4.000 62.920 146.000 67.640 ;
+        RECT 4.400 61.520 146.000 62.920 ;
+        RECT 4.000 56.800 146.000 61.520 ;
+        RECT 4.000 55.400 145.600 56.800 ;
+        RECT 4.000 44.560 146.000 55.400 ;
+        RECT 4.000 43.160 145.600 44.560 ;
+        RECT 4.000 38.440 146.000 43.160 ;
+        RECT 4.400 37.040 146.000 38.440 ;
+        RECT 4.000 32.320 146.000 37.040 ;
+        RECT 4.000 30.920 145.600 32.320 ;
+        RECT 4.000 20.080 146.000 30.920 ;
+        RECT 4.000 18.680 145.600 20.080 ;
+        RECT 4.000 13.960 146.000 18.680 ;
+        RECT 4.400 12.560 146.000 13.960 ;
+        RECT 4.000 7.840 146.000 12.560 ;
+        RECT 4.000 6.975 145.600 7.840 ;
+      LAYER met4 ;
+	      RECT 5.520 10.640 144.440 138.960 ;
+  END
+END tempsense
+END LIBRARY
+

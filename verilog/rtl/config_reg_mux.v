@@ -47,8 +47,13 @@ module config_reg_mux (
 	input [11:0]		temp1_ticks_i,
 	input [11:0]		temp2_ticks_i,
 	input [11:0]		temp3_ticks_i,
-	output wire [11:0]	temp_ticks_o
+	output wire [11:0]	temp_ticks_o,
+
+	input				loopback_i,
+	output wire			loopback_o
 );
+
+	assign loopback_o = loopback_i;
 
 	always @(posedge reg_wr_i or negedge rst_n_i) begin
 		if (rst_n_i == 1'b0) begin
@@ -66,27 +71,27 @@ module config_reg_mux (
 		end
 	end
 
-assign mux_o =	(mux_adr_i==3'd0) ? mux0_i :
-				(mux_adr_i==3'd1) ? mux1_i :
-				(mux_adr_i==3'd2) ? mux2_i :
-				(mux_adr_i==3'd3) ? mux3_i :
-				(mux_adr_i==3'd4) ? mux4_i :
-				(mux_adr_i==3'd5) ? mux5_i :
-				(mux_adr_i==3'd6) ? mux6_i :
-				(mux_adr_i==3'd7) ? mux7_i :
-				6'b0;
-
-assign temp_dac_o =	(temp_sel_i==2'd0) ? temp0_dac_i :
-					(temp_sel_i==2'd1) ? temp1_dac_i :
-					(temp_sel_i==2'd2) ? temp2_dac_i :
-					(temp_sel_i==2'd3) ? temp3_dac_i :
+	assign mux_o =	(mux_adr_i==3'd0) ? mux0_i :
+					(mux_adr_i==3'd1) ? mux1_i :
+					(mux_adr_i==3'd2) ? mux2_i :
+					(mux_adr_i==3'd3) ? mux3_i :
+					(mux_adr_i==3'd4) ? mux4_i :
+					(mux_adr_i==3'd5) ? mux5_i :
+					(mux_adr_i==3'd6) ? mux6_i :
+					(mux_adr_i==3'd7) ? mux7_i :
 					6'b0;
 
-assign temp_ticks_o =	(temp_sel_i==2'd0) ? temp0_ticks_i :
-						(temp_sel_i==2'd1) ? temp1_ticks_i :
-						(temp_sel_i==2'd2) ? temp2_ticks_i :
-						(temp_sel_i==2'd3) ? temp3_ticks_i :
-						12'b0;
+	assign temp_dac_o =	(temp_sel_i==2'd0) ? temp0_dac_i :
+						(temp_sel_i==2'd1) ? temp1_dac_i :
+						(temp_sel_i==2'd2) ? temp2_dac_i :
+						(temp_sel_i==2'd3) ? temp3_dac_i :
+						6'b0;
+
+	assign temp_ticks_o =	(temp_sel_i==2'd0) ? temp0_ticks_i :
+							(temp_sel_i==2'd1) ? temp1_ticks_i :
+							(temp_sel_i==2'd2) ? temp2_ticks_i :
+							(temp_sel_i==2'd3) ? temp3_ticks_i :
+							12'b0;
 
 endmodule // config_reg_mux
 

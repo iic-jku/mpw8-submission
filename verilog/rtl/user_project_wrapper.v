@@ -139,9 +139,6 @@ module user_project_wrapper #(
     assign la_data_out[109:104] = {adac_out_w};
     assign la_data_out[125:110] = {adc_result_w};
     assign la_data_out[126] = {adc_done_w};
-    assign la_data_out[127] = la_data_in[127]; // loopback to test basic functionality
-    assign dummy1_w = la_data_in[0];
-    assign dummy2_w = la_data_in[2:1];
 
     // ------------------------------------------------------
     // register file and output mux (since we are IO limited)
@@ -160,19 +157,22 @@ module user_project_wrapper #(
         .reg0_o(reg0_w), .reg1_o(reg1_w), .reg2_o(reg2_w), .reg3_o(reg3_w),
         .mux_adr_i(data_out_sel_w),
         .mux_o(mux_out_w),
-        .mux0_i({dummy1_w, adc_done_w, temp3_done_w, temp2_done_w, temp1_done_w, temp0_done_w}),
+        .mux0_i({reg0_w[15], adc_done_w, temp3_done_w, temp2_done_w, temp1_done_w, temp0_done_w}),
         .mux1_i(temp_dac_w),
         .mux2_i(temp_tick_w[5:0]),
         .mux3_i(temp_tick_w[11:6]),
         .mux4_i(adac_out_w),
         .mux5_i(adc_result_w[5:0]),
         .mux6_i(adc_result_w[11:6]),
-        .mux7_i({dummy2_w, adc_result_w[15:12]}),
+        .mux7_i({reg0_w[14:13], adc_result_w[15:12]}),
         .temp_sel_i(reg0_w[8:7]),
         .temp0_dac_i(temp0_dac_w), .temp1_dac_i(temp1_dac_w), .temp2_dac_i(temp2_dac_w), .temp3_dac_i(temp3_dac_w),
         .temp_dac_o(temp_dac_w),
         .temp0_ticks_i(temp0_tick_w), .temp1_ticks_i(temp1_tick_w), .temp2_ticks_i(temp2_tick_w), .temp3_ticks_i(temp3_tick_w),
-        .temp_ticks_o(temp_tick_w)
+        .temp_ticks_o(temp_tick_w),
+
+        .loopback_i(la_data_in[127]),
+        .loopback_o(la_data_out[127])
     );
 
     // -----------------------------------------------------------------------
