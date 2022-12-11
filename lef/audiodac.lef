@@ -6,13 +6,13 @@ MACRO audiodac
   CLASS BLOCK ;
   FOREIGN audiodac ;
   ORIGIN 0.000 0.000 ;
-  SIZE 661.310 BY 672.030 ;
+  SIZE 667.985 BY 678.705 ;
   PIN clk_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 644.090 0.000 644.370 4.000 ;
+        RECT 652.370 0.000 652.650 4.000 ;
     END
   END clk_i
   PIN ds_n_o
@@ -20,7 +20,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 495.510 668.030 495.790 672.030 ;
+        RECT 500.570 674.705 500.850 678.705 ;
     END
   END ds_n_o
   PIN ds_o
@@ -28,7 +28,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 165.230 668.030 165.510 672.030 ;
+        RECT 166.610 674.705 166.890 678.705 ;
     END
   END ds_o
   PIN fifo_ack_o
@@ -36,7 +36,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 524.490 0.000 524.770 4.000 ;
+        RECT 530.930 0.000 531.210 4.000 ;
     END
   END fifo_ack_o
   PIN fifo_empty_o
@@ -44,7 +44,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 584.290 0.000 584.570 4.000 ;
+        RECT 591.650 0.000 591.930 4.000 ;
     END
   END fifo_empty_o
   PIN fifo_full_o
@@ -52,7 +52,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 554.390 0.000 554.670 4.000 ;
+        RECT 561.290 0.000 561.570 4.000 ;
     END
   END fifo_full_o
   PIN fifo_i[0]
@@ -60,7 +60,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 16.190 0.000 16.470 4.000 ;
+        RECT 14.810 0.000 15.090 4.000 ;
     END
   END fifo_i[0]
   PIN fifo_i[10]
@@ -68,7 +68,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 315.190 0.000 315.470 4.000 ;
+        RECT 318.410 0.000 318.690 4.000 ;
     END
   END fifo_i[10]
   PIN fifo_i[11]
@@ -76,7 +76,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 345.090 0.000 345.370 4.000 ;
+        RECT 348.770 0.000 349.050 4.000 ;
     END
   END fifo_i[11]
   PIN fifo_i[12]
@@ -84,7 +84,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 374.990 0.000 375.270 4.000 ;
+        RECT 379.130 0.000 379.410 4.000 ;
     END
   END fifo_i[12]
   PIN fifo_i[13]
@@ -92,7 +92,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 404.890 0.000 405.170 4.000 ;
+        RECT 409.490 0.000 409.770 4.000 ;
     END
   END fifo_i[13]
   PIN fifo_i[14]
@@ -100,7 +100,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 434.790 0.000 435.070 4.000 ;
+        RECT 439.850 0.000 440.130 4.000 ;
     END
   END fifo_i[14]
   PIN fifo_i[15]
@@ -108,7 +108,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 464.690 0.000 464.970 4.000 ;
+        RECT 470.210 0.000 470.490 4.000 ;
     END
   END fifo_i[15]
   PIN fifo_i[1]
@@ -116,7 +116,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 46.090 0.000 46.370 4.000 ;
+        RECT 45.170 0.000 45.450 4.000 ;
     END
   END fifo_i[1]
   PIN fifo_i[2]
@@ -124,7 +124,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 75.990 0.000 76.270 4.000 ;
+        RECT 75.530 0.000 75.810 4.000 ;
     END
   END fifo_i[2]
   PIN fifo_i[3]
@@ -140,7 +140,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 135.790 0.000 136.070 4.000 ;
+        RECT 136.250 0.000 136.530 4.000 ;
     END
   END fifo_i[4]
   PIN fifo_i[5]
@@ -148,7 +148,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 165.690 0.000 165.970 4.000 ;
+        RECT 166.610 0.000 166.890 4.000 ;
     END
   END fifo_i[5]
   PIN fifo_i[6]
@@ -156,7 +156,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 195.590 0.000 195.870 4.000 ;
+        RECT 196.970 0.000 197.250 4.000 ;
     END
   END fifo_i[6]
   PIN fifo_i[7]
@@ -164,7 +164,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 225.490 0.000 225.770 4.000 ;
+        RECT 227.330 0.000 227.610 4.000 ;
     END
   END fifo_i[7]
   PIN fifo_i[8]
@@ -172,7 +172,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 255.390 0.000 255.670 4.000 ;
+        RECT 257.690 0.000 257.970 4.000 ;
     END
   END fifo_i[8]
   PIN fifo_i[9]
@@ -180,7 +180,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 285.290 0.000 285.570 4.000 ;
+        RECT 288.050 0.000 288.330 4.000 ;
     END
   END fifo_i[9]
   PIN fifo_rdy_i
@@ -188,7 +188,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 494.590 0.000 494.870 4.000 ;
+        RECT 500.570 0.000 500.850 4.000 ;
     END
   END fifo_rdy_i
   PIN mode_i
@@ -196,7 +196,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 25.880 4.000 26.480 ;
+        RECT 0.000 24.520 4.000 25.120 ;
     END
   END mode_i
   PIN osr_i[0]
@@ -204,7 +204,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 246.880 4.000 247.480 ;
+        RECT 0.000 248.920 4.000 249.520 ;
     END
   END osr_i[0]
   PIN osr_i[1]
@@ -212,7 +212,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 291.080 4.000 291.680 ;
+        RECT 0.000 293.800 4.000 294.400 ;
     END
   END osr_i[1]
   PIN rst_n_i
@@ -220,7 +220,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 614.190 0.000 614.470 4.000 ;
+        RECT 622.010 0.000 622.290 4.000 ;
     END
   END rst_n_i
   PIN tst_fifo_loop_i
@@ -228,7 +228,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 335.280 4.000 335.880 ;
+        RECT 0.000 338.680 4.000 339.280 ;
     END
   END tst_fifo_loop_i
   PIN tst_sinegen_en_i
@@ -236,7 +236,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 379.480 4.000 380.080 ;
+        RECT 0.000 383.560 4.000 384.160 ;
     END
   END tst_sinegen_en_i
   PIN tst_sinegen_step_i[0]
@@ -244,7 +244,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 423.680 4.000 424.280 ;
+        RECT 0.000 428.440 4.000 429.040 ;
     END
   END tst_sinegen_step_i[0]
   PIN tst_sinegen_step_i[1]
@@ -252,7 +252,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 467.880 4.000 468.480 ;
+        RECT 0.000 473.320 4.000 473.920 ;
     END
   END tst_sinegen_step_i[1]
   PIN tst_sinegen_step_i[2]
@@ -260,7 +260,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 512.080 4.000 512.680 ;
+        RECT 0.000 518.200 4.000 518.800 ;
     END
   END tst_sinegen_step_i[2]
   PIN tst_sinegen_step_i[3]
@@ -268,7 +268,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 556.280 4.000 556.880 ;
+        RECT 0.000 563.080 4.000 563.680 ;
     END
   END tst_sinegen_step_i[3]
   PIN tst_sinegen_step_i[4]
@@ -276,7 +276,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 600.480 4.000 601.080 ;
+        RECT 0.000 607.960 4.000 608.560 ;
     END
   END tst_sinegen_step_i[4]
   PIN tst_sinegen_step_i[5]
@@ -284,7 +284,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 644.680 4.000 645.280 ;
+        RECT 0.000 652.840 4.000 653.440 ;
     END
   END tst_sinegen_step_i[5]
   PIN vccd1
@@ -292,23 +292,23 @@ MACRO audiodac
     USE POWER ;
     PORT
       LAYER met4 ;
-        RECT 21.040 10.640 22.640 661.200 ;
+        RECT 21.040 10.640 22.640 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 174.640 10.640 176.240 661.200 ;
+        RECT 174.640 10.640 176.240 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 328.240 10.640 329.840 661.200 ;
+        RECT 328.240 10.640 329.840 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 481.840 10.640 483.440 661.200 ;
+        RECT 481.840 10.640 483.440 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 635.440 10.640 637.040 661.200 ;
+        RECT 635.440 10.640 637.040 666.640 ;
     END
   END vccd1
   PIN volume_i[0]
@@ -316,7 +316,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 70.080 4.000 70.680 ;
+        RECT 0.000 69.400 4.000 70.000 ;
     END
   END volume_i[0]
   PIN volume_i[1]
@@ -332,7 +332,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 158.480 4.000 159.080 ;
+        RECT 0.000 159.160 4.000 159.760 ;
     END
   END volume_i[2]
   PIN volume_i[3]
@@ -340,7 +340,7 @@ MACRO audiodac
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 202.680 4.000 203.280 ;
+        RECT 0.000 204.040 4.000 204.640 ;
     END
   END volume_i[3]
   PIN vssd1
@@ -348,96 +348,96 @@ MACRO audiodac
     USE GROUND ;
     PORT
       LAYER met4 ;
-        RECT 97.840 10.640 99.440 661.200 ;
+        RECT 97.840 10.640 99.440 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 251.440 10.640 253.040 661.200 ;
+        RECT 251.440 10.640 253.040 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 405.040 10.640 406.640 661.200 ;
+        RECT 405.040 10.640 406.640 666.640 ;
     END
     PORT
       LAYER met4 ;
-        RECT 558.640 10.640 560.240 661.200 ;
+        RECT 558.640 10.640 560.240 666.640 ;
     END
   END vssd1
   OBS
       LAYER li1 ;
-        RECT 5.520 10.795 655.500 661.045 ;
+        RECT 5.520 10.795 662.400 666.485 ;
       LAYER met1 ;
-        RECT 5.520 10.640 655.500 661.200 ;
+        RECT 5.520 10.640 662.400 666.640 ;
       LAYER met2 ;
-        RECT 7.460 667.750 164.950 668.030 ;
-        RECT 165.790 667.750 495.230 668.030 ;
-        RECT 496.070 667.750 652.180 668.030 ;
-        RECT 7.460 4.280 652.180 667.750 ;
-        RECT 7.460 3.670 15.910 4.280 ;
-        RECT 16.750 3.670 45.810 4.280 ;
-        RECT 46.650 3.670 75.710 4.280 ;
-        RECT 76.550 3.670 105.610 4.280 ;
-        RECT 106.450 3.670 135.510 4.280 ;
-        RECT 136.350 3.670 165.410 4.280 ;
-        RECT 166.250 3.670 195.310 4.280 ;
-        RECT 196.150 3.670 225.210 4.280 ;
-        RECT 226.050 3.670 255.110 4.280 ;
-        RECT 255.950 3.670 285.010 4.280 ;
-        RECT 285.850 3.670 314.910 4.280 ;
-        RECT 315.750 3.670 344.810 4.280 ;
-        RECT 345.650 3.670 374.710 4.280 ;
-        RECT 375.550 3.670 404.610 4.280 ;
-        RECT 405.450 3.670 434.510 4.280 ;
-        RECT 435.350 3.670 464.410 4.280 ;
-        RECT 465.250 3.670 494.310 4.280 ;
-        RECT 495.150 3.670 524.210 4.280 ;
-        RECT 525.050 3.670 554.110 4.280 ;
-        RECT 554.950 3.670 584.010 4.280 ;
-        RECT 584.850 3.670 613.910 4.280 ;
-        RECT 614.750 3.670 643.810 4.280 ;
-        RECT 644.650 3.670 652.180 4.280 ;
+        RECT 7.000 674.425 166.330 674.705 ;
+        RECT 167.170 674.425 500.290 674.705 ;
+        RECT 501.130 674.425 660.000 674.705 ;
+        RECT 7.000 4.280 660.000 674.425 ;
+        RECT 7.000 3.670 14.530 4.280 ;
+        RECT 15.370 3.670 44.890 4.280 ;
+        RECT 45.730 3.670 75.250 4.280 ;
+        RECT 76.090 3.670 105.610 4.280 ;
+        RECT 106.450 3.670 135.970 4.280 ;
+        RECT 136.810 3.670 166.330 4.280 ;
+        RECT 167.170 3.670 196.690 4.280 ;
+        RECT 197.530 3.670 227.050 4.280 ;
+        RECT 227.890 3.670 257.410 4.280 ;
+        RECT 258.250 3.670 287.770 4.280 ;
+        RECT 288.610 3.670 318.130 4.280 ;
+        RECT 318.970 3.670 348.490 4.280 ;
+        RECT 349.330 3.670 378.850 4.280 ;
+        RECT 379.690 3.670 409.210 4.280 ;
+        RECT 410.050 3.670 439.570 4.280 ;
+        RECT 440.410 3.670 469.930 4.280 ;
+        RECT 470.770 3.670 500.290 4.280 ;
+        RECT 501.130 3.670 530.650 4.280 ;
+        RECT 531.490 3.670 561.010 4.280 ;
+        RECT 561.850 3.670 591.370 4.280 ;
+        RECT 592.210 3.670 621.730 4.280 ;
+        RECT 622.570 3.670 652.090 4.280 ;
+        RECT 652.930 3.670 660.000 4.280 ;
       LAYER met3 ;
-        RECT 4.000 645.680 638.875 661.125 ;
-        RECT 4.400 644.280 638.875 645.680 ;
-        RECT 4.000 601.480 638.875 644.280 ;
-        RECT 4.400 600.080 638.875 601.480 ;
-        RECT 4.000 557.280 638.875 600.080 ;
-        RECT 4.400 555.880 638.875 557.280 ;
-        RECT 4.000 513.080 638.875 555.880 ;
-        RECT 4.400 511.680 638.875 513.080 ;
-        RECT 4.000 468.880 638.875 511.680 ;
-        RECT 4.400 467.480 638.875 468.880 ;
-        RECT 4.000 424.680 638.875 467.480 ;
-        RECT 4.400 423.280 638.875 424.680 ;
-        RECT 4.000 380.480 638.875 423.280 ;
-        RECT 4.400 379.080 638.875 380.480 ;
-        RECT 4.000 336.280 638.875 379.080 ;
-        RECT 4.400 334.880 638.875 336.280 ;
-        RECT 4.000 292.080 638.875 334.880 ;
-        RECT 4.400 290.680 638.875 292.080 ;
-        RECT 4.000 247.880 638.875 290.680 ;
-        RECT 4.400 246.480 638.875 247.880 ;
-        RECT 4.000 203.680 638.875 246.480 ;
-        RECT 4.400 202.280 638.875 203.680 ;
-        RECT 4.000 159.480 638.875 202.280 ;
-        RECT 4.400 158.080 638.875 159.480 ;
-        RECT 4.000 115.280 638.875 158.080 ;
-        RECT 4.400 113.880 638.875 115.280 ;
-        RECT 4.000 71.080 638.875 113.880 ;
-        RECT 4.400 69.680 638.875 71.080 ;
-        RECT 4.000 26.880 638.875 69.680 ;
-        RECT 4.400 25.480 638.875 26.880 ;
-        RECT 4.000 10.715 638.875 25.480 ;
+        RECT 4.000 653.840 653.595 666.565 ;
+        RECT 4.400 652.440 653.595 653.840 ;
+        RECT 4.000 608.960 653.595 652.440 ;
+        RECT 4.400 607.560 653.595 608.960 ;
+        RECT 4.000 564.080 653.595 607.560 ;
+        RECT 4.400 562.680 653.595 564.080 ;
+        RECT 4.000 519.200 653.595 562.680 ;
+        RECT 4.400 517.800 653.595 519.200 ;
+        RECT 4.000 474.320 653.595 517.800 ;
+        RECT 4.400 472.920 653.595 474.320 ;
+        RECT 4.000 429.440 653.595 472.920 ;
+        RECT 4.400 428.040 653.595 429.440 ;
+        RECT 4.000 384.560 653.595 428.040 ;
+        RECT 4.400 383.160 653.595 384.560 ;
+        RECT 4.000 339.680 653.595 383.160 ;
+        RECT 4.400 338.280 653.595 339.680 ;
+        RECT 4.000 294.800 653.595 338.280 ;
+        RECT 4.400 293.400 653.595 294.800 ;
+        RECT 4.000 249.920 653.595 293.400 ;
+        RECT 4.400 248.520 653.595 249.920 ;
+        RECT 4.000 205.040 653.595 248.520 ;
+        RECT 4.400 203.640 653.595 205.040 ;
+        RECT 4.000 160.160 653.595 203.640 ;
+        RECT 4.400 158.760 653.595 160.160 ;
+        RECT 4.000 115.280 653.595 158.760 ;
+        RECT 4.400 113.880 653.595 115.280 ;
+        RECT 4.000 70.400 653.595 113.880 ;
+        RECT 4.400 69.000 653.595 70.400 ;
+        RECT 4.000 25.520 653.595 69.000 ;
+        RECT 4.400 24.120 653.595 25.520 ;
+        RECT 4.000 10.715 653.595 24.120 ;
       LAYER met4 ;
-        RECT 10.415 27.375 20.640 642.425 ;
-        RECT 23.040 27.375 97.440 642.425 ;
-        RECT 99.840 27.375 174.240 642.425 ;
-        RECT 176.640 27.375 251.040 642.425 ;
-        RECT 253.440 27.375 327.840 642.425 ;
-        RECT 330.240 27.375 404.640 642.425 ;
-        RECT 407.040 27.375 481.440 642.425 ;
-        RECT 483.840 27.375 558.240 642.425 ;
-        RECT 560.640 27.375 632.665 642.425 ;
+        RECT 15.935 17.175 20.640 664.865 ;
+        RECT 23.040 17.175 97.440 664.865 ;
+        RECT 99.840 17.175 174.240 664.865 ;
+        RECT 176.640 17.175 251.040 664.865 ;
+        RECT 253.440 17.175 327.840 664.865 ;
+        RECT 330.240 17.175 404.640 664.865 ;
+        RECT 407.040 17.175 481.440 664.865 ;
+        RECT 483.840 17.175 558.240 664.865 ;
+        RECT 560.640 17.175 624.385 664.865 ;
   END
 END audiodac
 END LIBRARY

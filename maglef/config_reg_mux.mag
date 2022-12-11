@@ -1,11 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1670309443
+timestamp 1670618896
 << obsli1 >>
 rect 1104 2159 58880 57681
 << obsm1 >>
-rect 1104 1776 59878 57860
+rect 1104 1708 59694 57712
 << metal2 >>
 rect 1858 59200 1914 60000
 rect 3054 59200 3110 60000
@@ -107,7 +107,7 @@ rect 55310 0 55366 800
 rect 56414 0 56470 800
 rect 57518 0 57574 800
 << obsm2 >>
-rect 1492 59144 1802 59200
+rect 1674 59144 1802 59200
 rect 1970 59144 2998 59200
 rect 3166 59144 4194 59200
 rect 4362 59144 5390 59200
@@ -155,9 +155,9 @@ rect 53398 59144 54426 59200
 rect 54594 59144 55622 59200
 rect 55790 59144 56818 59200
 rect 56986 59144 58014 59200
-rect 58182 59144 59872 59200
-rect 1492 856 59872 59144
-rect 1492 734 2262 856
+rect 58182 59144 59688 59200
+rect 1674 856 59688 59144
+rect 1674 734 2262 856
 rect 2430 734 3366 856
 rect 3534 734 4470 856
 rect 4638 734 5574 856
@@ -208,7 +208,7 @@ rect 53214 734 54150 856
 rect 54318 734 55254 856
 rect 55422 734 56358 856
 rect 56526 734 57462 856
-rect 57630 734 59872 856
+rect 57630 734 59688 856
 << metal3 >>
 rect 59200 58896 60000 59016
 rect 59200 58080 60000 58200
@@ -495,8 +495,6 @@ rect 4208 2128 4528 57712
 rect 19568 2128 19888 57712
 rect 34928 2128 35248 57712
 rect 50288 2128 50608 57712
-<< obsm4 >>
-rect 57283 26147 57349 40085
 << labels >>
 rlabel metal2 s 56414 0 56470 800 6 loopback_i
 port 1 nsew signal input
@@ -980,8 +978,8 @@ port 237 nsew ground bidirectional
 string FIXED_BBOX 0 0 60000 60000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 2578166
-string GDS_FILE /foss/designs/openlane/config_reg_mux/runs/foo/results/signoff/config_reg_mux.magic.gds
-string GDS_START 270790
+string GDS_END 2608062
+string GDS_FILE /home/harald/mpw8-submission/openlane/config_reg_mux/runs/22_12_09_21_46/results/signoff/config_reg_mux.magic.gds
+string GDS_START 270676
 << end >>
 
