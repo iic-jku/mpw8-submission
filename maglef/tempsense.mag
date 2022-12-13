@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1670618774
+timestamp 1670943006
 << obsli1 >>
 rect 1104 2159 28888 27761
 << obsm1 >>
@@ -12,8 +12,8 @@ rect 11242 0 11298 800
 rect 18694 0 18750 800
 rect 26146 0 26202 800
 << obsm2 >>
-rect 1492 856 28500 28393
-rect 1492 800 3734 856
+rect 1490 856 28500 28393
+rect 1490 800 3734 856
 rect 3902 800 11186 856
 rect 11354 800 18638 856
 rect 18806 800 26090 856
@@ -156,8 +156,8 @@ port 24 nsew ground bidirectional
 string FIXED_BBOX 0 0 30000 30000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 1477892
-string GDS_FILE /home/harald/mpw8-submission/openlane/tempsense/runs/22_12_09_21_44/results/signoff/tempsense.magic.gds
+string GDS_END 1482648
+string GDS_FILE /foss/designs/openlane/tempsense/runs/foo/results/signoff/tempsense.magic.gds
 string GDS_START 366644
 << end >>
 
