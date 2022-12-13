@@ -1,7 +1,7 @@
 /*
  * AUDIODAC -- 16b Delta-Sigma Modulator with Single-Bit Output
  *
- * (c) 2021-2022 Harald Pretl (harald.pretl@jku.at)
+ * SPDX-FileCopyrightText: 2021-2022 Harald Pretl (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
  *
  * This delta-sigma modulator includes an input-side FIFO for easy connection
@@ -28,6 +28,8 @@
  * Ideas for future extension:
  * 	 (1) Implement a higher-order (e.g. 5th order) modulator.
  *	 (2) Potentially substitute register-based FIFO by a dual-port RAM.
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 `default_nettype none

@@ -1,7 +1,7 @@
 /*
  * Configuration register (4x 16b) and output mux
  *
- * (c) 2022 Harald Pretl (harald.pretl@jku.at)
+ * SPDX-FileCopyrightText: 2022 Harald Pretl (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
  *
  * SPDX-License-Identifier: Apache-2.0

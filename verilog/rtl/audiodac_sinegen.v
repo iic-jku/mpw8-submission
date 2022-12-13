@@ -1,7 +1,7 @@
 /*
  * AUDIOAC_SINEGEN -- Simple Sine Generator based on a harcoded 16b LUT
  *
- * (c) 2021-2022 Harald Pretl and Jakob Ratschenberger (harald.pretl@jku.at)
+ * SPDX-FileCopyrightText: 2021-2022 Harald Pretl and Jakob Ratschenberger (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
  *
  * Parameters:
@@ -23,6 +23,8 @@
  *		tst_sinegen_step_i	... controls the step size per read (1 = use every ROM
  *								value, 2 = use every 2nd ROM entry, etc); the higher the
  *								step value, the faster the output sine
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 `default_nettype none

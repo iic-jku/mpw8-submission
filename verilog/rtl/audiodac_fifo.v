@@ -1,7 +1,7 @@
 /*
  * AUDIODAC_FIFO -- Configurable FIFO based on ring-buffer
  *
- * (c) 2021-2022 Harald Pretl (harald.pretl@jku.at)
+ * SPDX-FileCopyrightText: 2021-2022 Harald Pretl (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
  *
  * Parameters:
@@ -28,6 +28,8 @@
  *
  *		tst_fifo_loop_i		... enables a test mode where the data in the FIFO is looped
  *								at the output
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 `default_nettype none

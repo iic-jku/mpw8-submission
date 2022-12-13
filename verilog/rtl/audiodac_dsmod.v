@@ -1,7 +1,7 @@
 /*
  * AUDIOAC_DSMOD -- Delta-Sigma Modulator (1st/2nd Order) with Single-Bit Output
  *
- * (c) 2021-2022 Harald Pretl (harald.pretl@jku.at)
+ * SPDX-FileCopyrightText: 2021-2022 Harald Pretl (harald.pretl@jku.at)
  * Johannes Kepler University Linz, Institute for Integrated Circuits
  *
  * Parameters:
@@ -21,6 +21,8 @@
  *		scale_i			... scaling (attenuation) of input data in -6dB steps
  *							(0 = 0dB, 1 = -6dB, 2 = -12dB, ..., 15 = off)
  *		osr_i			... oversampling ratio (OSR), 0=32/1=64/2=128/3=256 is supported
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 `default_nettype none
