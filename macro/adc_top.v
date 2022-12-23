@@ -41,6 +41,8 @@ module adc_top(
    output reg [15:0] dummypin
    );
 
+`ifdef SIM
+
    wire [1:0] adc_in = {inp_analog, inn_analog};
    wire [15:0] adc_result =   (adc_in == 2'b00) ? 16'h1122 :
                               (adc_in == 2'b01) ? 16'h3344 :
@@ -56,7 +58,6 @@ module adc_top(
    wire delay_en = config_2_in[15];
 
    integer osr_val = 1;
-
    integer osr_ctr = 0;
 
    initial begin
@@ -115,6 +116,7 @@ module adc_top(
          endcase  
       end
    end
+`endif
 
 endmodule // adc_top
 

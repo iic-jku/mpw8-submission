@@ -7,7 +7,7 @@
  * This is the testbench for iic_dsmod.v
  */
 
-`timescale 10ns / 1ns
+`timescale 1ns / 1ns
 
 `include "adc_top.v"
 
@@ -17,8 +17,8 @@ module adc_top_tb;
 	reg 			RESET_N = 1'bx;
 	reg [1:0]		INPUT = 1'bx;
 	reg				START = 1'bx;
-	reg [15:0]		CONFIG1 = 16'b0;
-	reg [15:0]		CONFIG2 = 16'b0;
+	reg [15:0]		CONFIG1 = 16'b0000010000000000;
+	reg [15:0]		CONFIG2 = 16'b1000010000100001;
 
 	// outputs
 	wire [15:0]		DATA;
@@ -47,28 +47,28 @@ module adc_top_tb;
 		$dumpvars;
 
 		// de-assert reset
-		#50 RESET_N = 1'b0;
-		#55 RESET_N = 1'b1;
+		#5 		RESET_N = 1'b0;
+		#5 		RESET_N = 1'b1;
 
 		// state1
 		#100	INPUT = 2'b00;
-		#101 	START = 1'b1;
-		#102 	START = 1'b0;
+		#1 		START = 1'b1;
+		#2 		START = 1'b0;
 		// state2
-		#300	INPUT = 2'b01;
-		#301 	START = 1'b1;
-		#302 	START = 1'b0;	
+		#100	INPUT = 2'b01;
+		#1 		START = 1'b1;
+		#2 		START = 1'b0;	
 		// state3
-		#500	INPUT = 2'b10;
-		#501 	START = 1'b1;
-		#502 	START = 1'b0;	
+		#100	INPUT = 2'b10;
+		#1 		START = 1'b1;
+		#2 		START = 1'b0;	
 		// state4
-		#700	INPUT = 2'b11;
-		#701 	START = 1'b1;
-		#702 	START = 1'b0;	
+		#100	INPUT = 2'b11;
+		#1 		START = 1'b1;
+		#2 		START = 1'b0;	
 
 		// stop simulation
-		#1000 	$finish;
+		#100 	$finish;
 	end
 
 endmodule // adc_top_tb
