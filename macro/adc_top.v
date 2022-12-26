@@ -86,7 +86,7 @@ assign dummypin = 16'd0;
    always @(negedge rst_n) begin
       result_out <= 16'b0;
       conversion_finished_out <= 1'b0;
-      osr_ctr <= 8'b0;
+      osr_ctr <= 9'b0;
    end
 
    always @(posedge start_conversion_in) begin
