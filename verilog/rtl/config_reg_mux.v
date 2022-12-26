@@ -50,16 +50,11 @@ module config_reg_mux (
 	input [11:0]		temp3_ticks_i,
 	output wire [11:0]	temp_ticks_o,
 
-	output wire			tie_hi,
-	output wire			tie_lo,
-
 	input				loopback_i,
 	output wire			loopback_o
 );
 
 	assign loopback_o = loopback_i;
-	assign tie_hi = 1'b1;
-	assign tie_lo = 1'b0;
 
 	always @(posedge reg_wr_i or negedge rst_n_i) begin
 		if (rst_n_i == 1'b0) begin
