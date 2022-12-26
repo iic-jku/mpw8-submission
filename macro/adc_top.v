@@ -12,6 +12,10 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
+//
+//   This is a VERY simple behavioural model of the SAR ADC. A few basic
+//   assertions are built in.
+
 `default_nettype none
 `timescale 1ns / 1ns
 
@@ -38,8 +42,10 @@ module adc_top(
    input wire [15:0] config_2_in,    
    output reg [15:0] result_out,    
    output reg conversion_finished_out ,
-   output reg [15:0] dummypin
+   output wire [15:0] dummypin
    );
+
+assign dummypin = 16'd0;
 
 `ifdef SIM
 
@@ -51,30 +57,23 @@ module adc_top(
                               16'bx;
 
    wire [2:0] osr = config_1_in[5:3];
-   wire [4:0] delay_edge = config_1_in[15:10];
+   wire [5:0] delay_edge = config_1_in[15:10];
    wire [4:0] delay1 = config_2_in[4:0];
    wire [4:0] delay2 = config_2_in[9:5];
    wire [4:0] delay3 = config_2_in[14:10];
    wire delay_en = config_2_in[15];
 
-   integer osr_val = 1;
-   integer osr_ctr = 0;
+   wire [8:0] osr_val = (osr == 3'b000) ? 9'd1 :
+                        (osr == 3'b001) ? 9'd4 : 
+                        (osr == 3'b010) ? 9'd16 : 
+                        (osr == 3'b011) ? 9'd64 : 
+                        (osr == 3'b100) ? 9'd256 : 
+                        9'bx;
+   reg [8:0] osr_ctr;
 
    initial begin
       result_out <= 16'bx;
       conversion_finished_out <= 1'bx;
-      dummypin <= 16'b0;
-   end
-
-   always @(*) begin
-      case (osr)
-         3'b000: osr_val =   1;
-         3'b001: osr_val =   4;
-         3'b010: osr_val =  16;
-         3'b011: osr_val =  64;
-         3'b100: osr_val = 256;
-         default: $error("[ADC] illegal OSR setting");
-      endcase
    end
 
    always @(*) begin
@@ -87,15 +86,14 @@ module adc_top(
    always @(negedge rst_n) begin
       result_out <= 16'b0;
       conversion_finished_out <= 1'b0;
+      osr_ctr <= 8'b0;
    end
 
    always @(posedge start_conversion_in) begin
       #1 conversion_finished_out <= 1'b0;
-     
-      osr_ctr = osr_ctr + 1;
 
-      if (osr_ctr == osr_val) begin
-         osr_ctr = 0;
+      if ((osr_ctr + 1) == osr_val) begin
+         osr_ctr <= 0;
 
          case (delay1)
             5'd01: result_out <= #030 adc_result;
@@ -114,6 +112,8 @@ module adc_top(
             5'd16: conversion_finished_out <= #480 1'b1;
             default: $error("[ADC] delay setting not supported in model");
          endcase  
+      end else begin
+         osr_ctr <= osr_ctr + 1;
       end
    end
 `endif
