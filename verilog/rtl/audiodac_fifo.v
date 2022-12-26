@@ -33,6 +33,7 @@
  */
 
 `default_nettype none
+`timescale 10ns / 1ns
 `ifndef __AUDIOAC_FIFO__
 `define __AUDIOAC_FIFO__
 

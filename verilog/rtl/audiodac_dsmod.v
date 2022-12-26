@@ -26,6 +26,7 @@
  */
 
 `default_nettype none
+`timescale 10ns / 1ns
 `ifndef __AUDIODAC_DSMOD__
 `define __AUDIODAC_DSMOD__
 
