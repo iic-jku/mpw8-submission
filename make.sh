@@ -36,6 +36,11 @@ stage_result () {
 	cp "openlane/$1/runs/foo/results/final/verilog/gl/$1.v" verilog/gl
 }
 
+fix_lef () {
+	head -n -4 "lef/$1.lef" > temp.txt ; mv temp.txt "lef/$1.lef"
+	cat "$1"_obs.lef >> "lef/$1.lef"
+}
+
 # Get rid of old results
 clean_result
 
@@ -43,17 +48,18 @@ clean_result
 call_flow audiodac
 call_flow tempsense
 call_flow config_reg_mux
+call_flow const_gen
 
 # Stage results of hardening
 stage_result audiodac
 stage_result tempsense
 stage_result config_reg_mux
+stage_result const_gen
 
 # Abs OBS to LEFs as a WA for the pddgen fail
-head -n -4 lef/tempsense.lef > temp.txt ; mv temp.txt lef/tempsense.lef
-cat tempsense_obs.lef >> lef/tempsense.lef
-head -n -4 lef/config_reg_mux.lef > temp.txt ; mv temp.txt lef/config_reg_mux.lef
-cat config_reg_mux_obs.lef >> lef/config_reg_mux.lef
+fix_lef tempsense
+fix_lef config_reg_mux
+fix_lef const_gen
 
 # Assemble top-level
 call_flow user_project_wrapper
