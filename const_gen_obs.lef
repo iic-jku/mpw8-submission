@@ -1,0 +1,6 @@
+      LAYER met4 ;
+        RECT 0.070 10.640 299.850 288.560 ; 
+  END
+END const_gen
+END LIBRARY
+
