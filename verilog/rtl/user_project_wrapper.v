@@ -34,6 +34,7 @@
 `include "config_reg_mux.v"
 `include "audiodac.v"
 `include "tempsense.v"
+`include "const_gen.v"
 `include "../../macro/adc_top.v"
 //`include "/foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
 //`include "/foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
@@ -111,22 +112,22 @@ module user_project_wrapper #(
     wire        config_wr_w =       io_in[26];
     wire [1:0]  config_adr_w =      io_in[28:27];
     wire        trigger_in_w =      io_in[29];
-    assign      io_oeb[29:0] =      {30{tie_hi}};
+    assign      io_oeb[29:0] =      tie_hi[29:0];
 
     // ----------------------------
     // connect analog inputs to ADC
     // ----------------------------
     wire        adc_analog_in_p =   analog_io[30-7];
     wire        adc_analog_in_n =   analog_io[31-7];
-    assign      io_oeb[31:30] =     {2{tie_hi}};
+    assign      io_oeb[31:30] =     tie_hi[31:30];
 
     // -----------------------
     // connect outputs to core
     // -----------------------
-    assign      io_out[31:0] =      {32{reg0_b14}};
+    assign      io_out[31:0] =      tie_lo[31:0];
     assign      io_out[37:32] =     mux_out_w;
-    assign      io_oeb[37:32] =     {6{tie_lo}};
-    assign      {wbs_ack_o, wbs_dat_o, user_irq} = {36{reg0_b15}};
+    assign      io_oeb[37:32] =     tie_lo[37:32];
+    assign      {wbs_ack_o, wbs_dat_o, user_irq} = tie_lo[73:38];
 
     // ---------------------------------
     // define wires for interconnections
@@ -141,8 +142,6 @@ module user_project_wrapper #(
     wire [3:0]  reg0_b4_b1 = reg0_w[4:1];
     wire [1:0]  reg0_b6_b5 = reg0_w[6:5];
     wire [1:0]  reg0_b8_b7 = reg0_w[8:7];
-    wire        reg0_b14 = reg0_w[14];
-    wire        reg0_b15 = reg0_w[15];
     wire [15:0] reg1_w;
     wire        reg1_b0 = reg1_w[0];
     wire        reg1_b1 = reg1_w[1];
@@ -152,8 +151,8 @@ module user_project_wrapper #(
     wire [15:0] dummy_adc_w;
     wire [15:0] adc_result_w;
     wire        adc_done_w;
-    wire        tie_hi;
-    wire        tie_lo;
+    wire [31:0] tie_hi;
+    wire [95:0] tie_lo;
 
     // -----------------------------------------------------------
     // connect LA signals just in case to monitor internal signals
@@ -186,14 +185,14 @@ module user_project_wrapper #(
         .reg3_o(reg3_w),
         .mux_adr_i(data_out_sel_w),
         .mux_o(mux_out_w),
-        .mux0_i({tie_lo, adc_done_w, temp3_done_w, temp2_done_w, temp1_done_w, temp0_done_w}),
+        .mux0_i({tie_lo[74], adc_done_w, temp3_done_w, temp2_done_w, temp1_done_w, temp0_done_w}),
         .mux1_i(temp_dac_w),
         .mux2_i(temp_tick_w[5:0]),
         .mux3_i(temp_tick_w[11:6]),
         .mux4_i(dac_out_w),
         .mux5_i(adc_result_w[5:0]),
         .mux6_i(adc_result_w[11:6]),
-        .mux7_i({tie_lo, tie_lo, adc_result_w[15:12]}),
+        .mux7_i({tie_lo[75], tie_lo[76], adc_result_w[15:12]}),
         .temp_sel_i(reg0_b8_b7),
         .temp0_dac_i(temp0_dac_w),
         .temp1_dac_i(temp1_dac_w),
@@ -205,10 +204,6 @@ module user_project_wrapper #(
         .temp2_ticks_i(temp2_tick_w),
         .temp3_ticks_i(temp3_tick_w),
         .temp_ticks_o(temp_tick_w),
-
-        .tie_hi(tie_hi),
-        .tie_lo(tie_lo),
-
         .loopback_i(la_data_in[127]),
         .loopback_o(la_data_out[127])
     );
@@ -274,7 +269,7 @@ module user_project_wrapper #(
     // the digital audio dac from an earlier mpw
     // -----------------------------------------
 
-    assign dac_out_w[5] = tie_lo; 
+    assign dac_out_w[5] = tie_lo[77]; 
 
     audiodac dac0 (
     `ifdef USE_POWER_PINS
@@ -319,6 +314,20 @@ module user_project_wrapper #(
         .result_out(adc_result_w),
         .conversion_finished_out(adc_done_w),
         .dummypin(dummy_adc_w)
+    );
+
+    // --------------------------------------
+    // block to generate const ones and zeros
+    // --------------------------------------
+
+    const_gen const_gen0 (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),    // User area 2 1.8v supply
+        .vssd1(vssd1),	// User area 2 digital ground
+    `endif
+
+        .tie_hi(tie_hi),
+        .tie_lo(tie_lo)
     );
 
 endmodule	// user_project_wrapper
