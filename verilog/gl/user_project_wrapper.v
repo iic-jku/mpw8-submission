@@ -53,12 +53,28 @@ module user_project_wrapper (user_clock2,
  output [31:0] wbs_dat_o;
  input [3:0] wbs_sel_i;
 
- wire \adac_out_w[0] ;
- wire \adac_out_w[1] ;
- wire \adac_out_w[2] ;
- wire \adac_out_w[3] ;
- wire \adac_out_w[4] ;
  wire adc_done_w;
+ wire \dac_out_w[0] ;
+ wire \dac_out_w[1] ;
+ wire \dac_out_w[2] ;
+ wire \dac_out_w[3] ;
+ wire \dac_out_w[4] ;
+ wire \dummy_adc_w[0] ;
+ wire \dummy_adc_w[10] ;
+ wire \dummy_adc_w[11] ;
+ wire \dummy_adc_w[12] ;
+ wire \dummy_adc_w[13] ;
+ wire \dummy_adc_w[14] ;
+ wire \dummy_adc_w[15] ;
+ wire \dummy_adc_w[1] ;
+ wire \dummy_adc_w[2] ;
+ wire \dummy_adc_w[3] ;
+ wire \dummy_adc_w[4] ;
+ wire \dummy_adc_w[5] ;
+ wire \dummy_adc_w[6] ;
+ wire \dummy_adc_w[7] ;
+ wire \dummy_adc_w[8] ;
+ wire \dummy_adc_w[9] ;
  wire temp0_done_w;
  wire \temp1_dac_w[0] ;
  wire \temp1_dac_w[1] ;
@@ -117,48 +133,28 @@ module user_project_wrapper (user_clock2,
  wire \temp3_tick_w[7] ;
  wire \temp3_tick_w[8] ;
  wire \temp3_tick_w[9] ;
+ wire \tie_lo[74] ;
+ wire \tie_lo[75] ;
+ wire \tie_lo[76] ;
+ wire \tie_lo[78] ;
+ wire \tie_lo[79] ;
+ wire \tie_lo[80] ;
+ wire \tie_lo[81] ;
+ wire \tie_lo[82] ;
+ wire \tie_lo[83] ;
+ wire \tie_lo[84] ;
+ wire \tie_lo[85] ;
+ wire \tie_lo[86] ;
+ wire \tie_lo[87] ;
+ wire \tie_lo[88] ;
+ wire \tie_lo[89] ;
+ wire \tie_lo[90] ;
+ wire \tie_lo[91] ;
+ wire \tie_lo[92] ;
+ wire \tie_lo[93] ;
+ wire \tie_lo[94] ;
+ wire \tie_lo[95] ;
 
- audiodac adac0 (.clk_i(io_in[6]),
-    .ds_n_o(\adac_out_w[1] ),
-    .ds_o(\adac_out_w[0] ),
-    .fifo_ack_o(\adac_out_w[2] ),
-    .fifo_empty_o(\adac_out_w[4] ),
-    .fifo_full_o(\adac_out_w[3] ),
-    .fifo_rdy_i(io_in[29]),
-    .mode_i(la_data_out[0]),
-    .rst_n_i(io_in[5]),
-    .tst_fifo_loop_i(la_data_out[16]),
-    .tst_sinegen_en_i(la_data_out[17]),
-    .vccd1(vccd1),
-    .vssd1(vssd1),
-    .fifo_i({io_in[22],
-    io_in[21],
-    io_in[20],
-    io_in[19],
-    io_in[18],
-    io_in[17],
-    io_in[16],
-    io_in[15],
-    io_in[14],
-    io_in[13],
-    io_in[12],
-    io_in[11],
-    io_in[10],
-    io_in[9],
-    io_in[8],
-    io_in[7]}),
-    .osr_i({la_data_out[6],
-    la_data_out[5]}),
-    .tst_sinegen_step_i({la_data_out[23],
-    la_data_out[22],
-    la_data_out[21],
-    la_data_out[20],
-    la_data_out[19],
-    la_data_out[18]}),
-    .volume_i({la_data_out[4],
-    la_data_out[3],
-    la_data_out[2],
-    la_data_out[1]}));
  adc_top adc0 (.VDD(vccd2),
     .VSS(vssd2),
     .clk_vcm(io_in[6]),
@@ -199,22 +195,22 @@ module user_project_wrapper (user_clock2,
     la_data_out[50],
     la_data_out[49],
     la_data_out[48]}),
-    .dummypin({_NC1,
-    _NC2,
-    _NC3,
-    _NC4,
-    _NC5,
-    _NC6,
-    _NC7,
-    _NC8,
-    _NC9,
-    _NC10,
-    _NC11,
-    _NC12,
-    _NC13,
-    _NC14,
-    _NC15,
-    _NC16}),
+    .dummypin({\dummy_adc_w[15] ,
+    \dummy_adc_w[14] ,
+    \dummy_adc_w[13] ,
+    \dummy_adc_w[12] ,
+    \dummy_adc_w[11] ,
+    \dummy_adc_w[10] ,
+    \dummy_adc_w[9] ,
+    \dummy_adc_w[8] ,
+    \dummy_adc_w[7] ,
+    \dummy_adc_w[6] ,
+    \dummy_adc_w[5] ,
+    \dummy_adc_w[4] ,
+    \dummy_adc_w[3] ,
+    \dummy_adc_w[2] ,
+    \dummy_adc_w[1] ,
+    \dummy_adc_w[0] }),
     .result_out({la_data_out[125],
     la_data_out[124],
     la_data_out[123],
@@ -237,7 +233,7 @@ module user_project_wrapper (user_clock2,
     .rst_n_i(io_in[5]),
     .vccd1(vccd1),
     .vssd1(vssd1),
-    .mux0_i({la_data_out[15],
+    .mux0_i({\tie_lo[74] ,
     adc_done_w,
     temp3_done_w,
     temp2_done_w,
@@ -262,11 +258,11 @@ module user_project_wrapper (user_clock2,
     la_data_out[83],
     la_data_out[82]}),
     .mux4_i({la_data_out[109],
-    \adac_out_w[4] ,
-    \adac_out_w[3] ,
-    \adac_out_w[2] ,
-    \adac_out_w[1] ,
-    \adac_out_w[0] }),
+    \dac_out_w[4] ,
+    \dac_out_w[3] ,
+    \dac_out_w[2] ,
+    \dac_out_w[1] ,
+    \dac_out_w[0] }),
     .mux5_i({la_data_out[115],
     la_data_out[114],
     la_data_out[113],
@@ -279,8 +275,8 @@ module user_project_wrapper (user_clock2,
     la_data_out[118],
     la_data_out[117],
     la_data_out[116]}),
-    .mux7_i({la_data_out[14],
-    la_data_out[13],
+    .mux7_i({\tie_lo[75] ,
+    \tie_lo[76] ,
     la_data_out[125],
     la_data_out[124],
     la_data_out[123],
@@ -468,6 +464,177 @@ module user_project_wrapper (user_clock2,
     la_data_out[78],
     la_data_out[77],
     la_data_out[76]}));
+ const_gen const_gen0 (.vccd1(vccd1),
+    .vssd1(vssd1),
+    .tie_hi({io_oeb[31],
+    io_oeb[30],
+    io_oeb[29],
+    io_oeb[28],
+    io_oeb[27],
+    io_oeb[26],
+    io_oeb[25],
+    io_oeb[24],
+    io_oeb[23],
+    io_oeb[22],
+    io_oeb[21],
+    io_oeb[20],
+    io_oeb[19],
+    io_oeb[18],
+    io_oeb[17],
+    io_oeb[16],
+    io_oeb[15],
+    io_oeb[14],
+    io_oeb[13],
+    io_oeb[12],
+    io_oeb[11],
+    io_oeb[10],
+    io_oeb[9],
+    io_oeb[8],
+    io_oeb[7],
+    io_oeb[6],
+    io_oeb[5],
+    io_oeb[4],
+    io_oeb[3],
+    io_oeb[2],
+    io_oeb[1],
+    io_oeb[0]}),
+    .tie_lo({\tie_lo[95] ,
+    \tie_lo[94] ,
+    \tie_lo[93] ,
+    \tie_lo[92] ,
+    \tie_lo[91] ,
+    \tie_lo[90] ,
+    \tie_lo[89] ,
+    \tie_lo[88] ,
+    \tie_lo[87] ,
+    \tie_lo[86] ,
+    \tie_lo[85] ,
+    \tie_lo[84] ,
+    \tie_lo[83] ,
+    \tie_lo[82] ,
+    \tie_lo[81] ,
+    \tie_lo[80] ,
+    \tie_lo[79] ,
+    \tie_lo[78] ,
+    la_data_out[109],
+    \tie_lo[76] ,
+    \tie_lo[75] ,
+    \tie_lo[74] ,
+    wbs_ack_o,
+    wbs_dat_o[31],
+    wbs_dat_o[30],
+    wbs_dat_o[29],
+    wbs_dat_o[28],
+    wbs_dat_o[27],
+    wbs_dat_o[26],
+    wbs_dat_o[25],
+    wbs_dat_o[24],
+    wbs_dat_o[23],
+    wbs_dat_o[22],
+    wbs_dat_o[21],
+    wbs_dat_o[20],
+    wbs_dat_o[19],
+    wbs_dat_o[18],
+    wbs_dat_o[17],
+    wbs_dat_o[16],
+    wbs_dat_o[15],
+    wbs_dat_o[14],
+    wbs_dat_o[13],
+    wbs_dat_o[12],
+    wbs_dat_o[11],
+    wbs_dat_o[10],
+    wbs_dat_o[9],
+    wbs_dat_o[8],
+    wbs_dat_o[7],
+    wbs_dat_o[6],
+    wbs_dat_o[5],
+    wbs_dat_o[4],
+    wbs_dat_o[3],
+    wbs_dat_o[2],
+    wbs_dat_o[1],
+    wbs_dat_o[0],
+    user_irq[2],
+    user_irq[1],
+    user_irq[0],
+    io_oeb[37],
+    io_oeb[36],
+    io_oeb[35],
+    io_oeb[34],
+    io_oeb[33],
+    io_oeb[32],
+    io_out[31],
+    io_out[30],
+    io_out[29],
+    io_out[28],
+    io_out[27],
+    io_out[26],
+    io_out[25],
+    io_out[24],
+    io_out[23],
+    io_out[22],
+    io_out[21],
+    io_out[20],
+    io_out[19],
+    io_out[18],
+    io_out[17],
+    io_out[16],
+    io_out[15],
+    io_out[14],
+    io_out[13],
+    io_out[12],
+    io_out[11],
+    io_out[10],
+    io_out[9],
+    io_out[8],
+    io_out[7],
+    io_out[6],
+    io_out[5],
+    io_out[4],
+    io_out[3],
+    io_out[2],
+    io_out[1],
+    io_out[0]}));
+ audiodac dac0 (.clk_i(io_in[6]),
+    .ds_n_o(\dac_out_w[1] ),
+    .ds_o(\dac_out_w[0] ),
+    .fifo_ack_o(\dac_out_w[2] ),
+    .fifo_empty_o(\dac_out_w[4] ),
+    .fifo_full_o(\dac_out_w[3] ),
+    .fifo_rdy_i(io_in[29]),
+    .mode_i(la_data_out[0]),
+    .rst_n_i(io_in[5]),
+    .tst_fifo_loop_i(la_data_out[16]),
+    .tst_sinegen_en_i(la_data_out[17]),
+    .vccd1(vccd1),
+    .vssd1(vssd1),
+    .fifo_i({io_in[22],
+    io_in[21],
+    io_in[20],
+    io_in[19],
+    io_in[18],
+    io_in[17],
+    io_in[16],
+    io_in[15],
+    io_in[14],
+    io_in[13],
+    io_in[12],
+    io_in[11],
+    io_in[10],
+    io_in[9],
+    io_in[8],
+    io_in[7]}),
+    .osr_i({la_data_out[6],
+    la_data_out[5]}),
+    .tst_sinegen_step_i({la_data_out[23],
+    la_data_out[22],
+    la_data_out[21],
+    la_data_out[20],
+    la_data_out[19],
+    la_data_out[18]}),
+    .volume_i({la_data_out[4],
+    la_data_out[3],
+    la_data_out[2],
+    la_data_out[1]}));
  tempsense temp0 (.clk(io_in[6]),
     .conversion_finished_out(temp0_done_w),
     .rst_n(io_in[5]),
@@ -564,12 +731,12 @@ module user_project_wrapper (user_clock2,
     \temp3_dac_w[2] ,
     \temp3_dac_w[1] ,
     \temp3_dac_w[0] }));
- assign la_data_out[104] = \adac_out_w[0] ;
- assign la_data_out[105] = \adac_out_w[1] ;
- assign la_data_out[106] = \adac_out_w[2] ;
- assign la_data_out[107] = \adac_out_w[3] ;
- assign la_data_out[108] = \adac_out_w[4] ;
  assign la_data_out[126] = adc_done_w;
+ assign la_data_out[104] = \dac_out_w[0] ;
+ assign la_data_out[105] = \dac_out_w[1] ;
+ assign la_data_out[106] = \dac_out_w[2] ;
+ assign la_data_out[107] = \dac_out_w[3] ;
+ assign la_data_out[108] = \dac_out_w[4] ;
  assign la_data_out[100] = temp0_done_w;
  assign la_data_out[101] = temp1_done_w;
  assign la_data_out[102] = temp2_done_w;
