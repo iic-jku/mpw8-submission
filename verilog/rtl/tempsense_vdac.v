@@ -22,6 +22,10 @@
 `include "tempsense_vdac_cell.v"
 
 module tempsense_vdac #(parameter BITWIDTH = 6)(
+`ifdef USE_POWER_PINS
+  inout 				vccd1,	// User area 1 1.8V supply
+  inout 				vssd1,	// User area 1 digital ground
+`endif
   input wire [BITWIDTH-1:0] data,
   input wire enable,
   output wire vout_analog
@@ -30,6 +34,10 @@ module tempsense_vdac #(parameter BITWIDTH = 6)(
   generate 
     for (i = 0; i<BITWIDTH-1; i=i+1) begin : parallel_cells
       tempsense_vdac_cell #(.PARALLEL_CELLS(2**i)) vdac_batch (
+`ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+`endif
         .sign(data[BITWIDTH-1]),
         .data(data[i]),
         .enable(enable),
@@ -40,6 +48,10 @@ module tempsense_vdac #(parameter BITWIDTH = 6)(
   
   // Single cell for transition from 011..11 to 100..00
   tempsense_vdac_cell #(.PARALLEL_CELLS(1)) vdac_single (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),
+    .vssd1(vssd1),
+`endif
     .sign(1'b0),
     .data(1'b0),
     .enable(enable & (~data[BITWIDTH-1])),

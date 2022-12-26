@@ -42,6 +42,10 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   tempsense_sar_ctrl #(.DAC_RESOLUTION(DAC_RESOLUTION),
                        .COUNTER_BITWIDTH(COUNTER_BITWIDTH)) sar 
                        (
+`ifdef USE_POWER_PINS
+                        .vccd1(vccd1),
+                        .vssd1(vssd1),
+`endif          
                         .clk(clk),
                         .rst_n(rst_n),
                         .start_conv_in(start_conv_in),
@@ -61,6 +65,10 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   wire dcdc_enable_analog_w;
   tempsense_vdac #(.BITWIDTH(DAC_RESOLUTION)) dac
         (
+`ifdef USE_POWER_PINS
+         .vccd1(vccd1),
+         .vssd1(vssd1),
+`endif
          .data(dac_data_w),
          .enable(dac_enable_w),
          .vout_analog(dcdc_enable_analog_w)
@@ -70,9 +78,34 @@ module tempsense #(parameter DAC_RESOLUTION = 6,
   wire dcdc_trig_n_analog_w;
   wire dcdc_trigd_w;
   wire dcdc_trigd_n_w;
-  sky130_fd_sc_hd__einvp_1 dcdc (.A(dcdc_data_w), .TE(dcdc_enable_analog_w), .Z(dcdc_trig_n_analog_w));
-  sky130_fd_sc_hd__inv_4   inv1 (.A(dcdc_trig_n_analog_w),.Y(dcdc_trigd_w));
-  sky130_fd_sc_hd__inv_12  inv2 (.A(dcdc_trigd_w),.Y(dcdc_trigd_n_w));
+  sky130_fd_sc_hd__einvp_1 dcdc (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VPB(vccd1),
+      .VNB(vssd1),
+      .VGND(vssd1),
+`endif
+      .A(dcdc_data_w), 
+      .TE(dcdc_enable_analog_w), 
+      .Z(dcdc_trig_n_analog_w));
+  sky130_fd_sc_hd__inv_4   inv1 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VPB(vccd1),
+      .VNB(vssd1),
+      .VGND(vssd1),
+`endif 
+      .A(dcdc_trig_n_analog_w),
+      .Y(dcdc_trigd_w));
+  sky130_fd_sc_hd__inv_12  inv2 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VPB(vccd1),
+      .VNB(vssd1),
+      .VGND(vssd1),
+`endif
+      .A(dcdc_trigd_w),
+      .Y(dcdc_trigd_n_w));
   
 endmodule // tempsense
 

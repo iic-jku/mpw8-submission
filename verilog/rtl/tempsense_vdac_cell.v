@@ -21,6 +21,10 @@
 `define __TEMPSENSE_VDAC_CELL__
 
 module tempsense_vdac_cell #(parameter PARALLEL_CELLS = 4)(
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input wire sign,
   input wire data,
   input wire enable,
@@ -36,8 +40,26 @@ module tempsense_vdac_cell #(parameter PARALLEL_CELLS = 4)(
   genvar i;
   generate
     for (i=0; i < PARALLEL_CELLS; i=i+1) begin : einvp_batch
-      sky130_fd_sc_hd__einvp_1 pupd (.A(npu_pd), .TE(en_pupd), .Z(vout_analog));
-      sky130_fd_sc_hd__einvp_1 vref (.A(vout_analog), .TE(en_vref), .Z(vout_analog));
+      sky130_fd_sc_hd__einvp_1 pupd (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VPB(vccd1),
+        .VNB(vssd1),
+        .VGND(vssd1),
+`endif
+        .A(npu_pd),
+        .TE(en_pupd),
+        .Z(vout_analog));
+      sky130_fd_sc_hd__einvp_1 vref (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VPB(vccd1),
+        .VNB(vssd1),
+        .VGND(vssd1),
+`endif
+        .A(vout_analog),
+        .TE(en_vref),
+        .Z(vout_analog));
     end
   endgenerate
 endmodule // tempsense_vdac_cell

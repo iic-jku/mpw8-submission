@@ -37,6 +37,10 @@
 
 module tempsense_sar_ctrl #(parameter DAC_RESOLUTION = 6,
                             parameter COUNTER_BITWIDTH = 12) (
+`ifdef USE_POWER_PINS
+   inout vccd1,	// User area 1 1.8V supply
+   inout vssd1,	// User area 1 digital ground
+`endif
    // control
    input wire clk, 
    input wire rst_n,
